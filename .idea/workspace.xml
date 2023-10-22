@@ -1,33 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="" />
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added payment loyalty entity">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/model/Hotel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/HotelResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/LoyaltyPut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/LoyaltyResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/PaymentRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/PaymentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ReservationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ReservationRequestFull.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ReservationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/controller/LoyaltyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/payload/LoyaltyPut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/payload/LoyaltyRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/payload/LoyaltyResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/repository/LoyaltyRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/service/LoyaltyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/service/LoyaltyServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/resources/application-local.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/resources/application-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/controller/PaymentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/payload/PaymentPut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/payload/PaymentRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/payload/PaymentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/repository/PaymentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/service/PaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/service/PaymentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/resources/application-local.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/src/main/resources/application-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/controller/HotelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/controller/ReservationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/request/HotelRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/request/ReservationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/response/HotelResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/response/ReservationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/repository/HotelRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/repository/ReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/HotelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/HotelServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/resources/application-local.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservation/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distributed-system-hostels-booking-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-system-hostels-booking-system.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/loyalty/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/entity/Loyalty.java" beforeDir="false" afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/entity/Loyalty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/payment/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/entity/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/entity/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/entity/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation/src/main/resources/application.properties" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2WYj7zL6Z4vmumQRkb1xtaIKouO" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/distributed-system-hostels-booking-system/loyalty/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\loyalty\src\main\resources" />
+      <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\payment\src\main\resources" />
+      <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\loyalty\src\main\java\ru\bmstu\kibamba\loyalty" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\reservation\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.GatewayApplication">
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.bmstu.kibamba.gateway.GatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoyaltyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="loyalty" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.bmstu.kibamba.loyalty.LoyaltyApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaymentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="payment" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.bmstu.kibamba.payment.PaymentApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReservationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="reservation" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.bmstu.kibamba.reservation.ReservationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.postgres: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="postgres" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -36,11 +220,59 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696916249062</updated>
-      <workItem from="1696916250311" duration="21000" />
+      <workItem from="1696916250311" duration="9591000" />
+      <workItem from="1696961824132" duration="387000" />
+      <workItem from="1697398766501" duration="5121000" />
+      <workItem from="1697439858644" duration="3661000" />
+      <workItem from="1697561667769" duration="329000" />
+      <workItem from="1697961842189" duration="28314000" />
     </task>
+    <task id="LOCAL-00001" summary="added reservation and hotel entities">
+      <option name="closed" value="true" />
+      <created>1696920175605</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696920175605</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added payment entity">
+      <option name="closed" value="true" />
+      <created>1696920647195</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696920647195</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added payment loyalty entity">
+      <option name="closed" value="true" />
+      <created>1696921107422</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696921107422</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="added reservation and hotel entities" />
+    <MESSAGE value="added payment entity" />
+    <MESSAGE value="added payment loyalty entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="added payment loyalty entity" />
   </component>
 </project>

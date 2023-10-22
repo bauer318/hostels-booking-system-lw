@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -28,15 +29,15 @@ public class Reservation {
     private UUID paymentUid;
 
     @ManyToOne
-    @JoinColumn(name = "hotel_id")
+    @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
 
-    @Column(nullable = false, length = 20, columnDefinition = "CHECK (status IN ('PAID', 'CANCELED'))")
+    @Column(columnDefinition = "VARCHAR(20) CHECK (status IN ('PAID','CANCELED'))", nullable = false)
     private String status;
 
     @Column(name = "start_date")
-    private OffsetDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private OffsetDateTime endDate;
+    private LocalDate endDate;
 }

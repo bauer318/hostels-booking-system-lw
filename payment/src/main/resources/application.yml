@@ -1,0 +1,11 @@
+server:
+  port: 8060
+spring:
+  application.name: reservation-service
+  profiles.active: local
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update

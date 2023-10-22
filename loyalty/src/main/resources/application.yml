@@ -1,0 +1,11 @@
+server:
+  port: 8050
+spring:
+  application.name: loyalty-service
+  profiles.active: local
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
