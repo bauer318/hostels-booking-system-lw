@@ -10,4 +10,6 @@ public interface PaymentService {
     PaymentResponse createPayment(PaymentRequest paymentRequest);
 
     PaymentResponse updatePayment(UUID paymentUid, PaymentPut paymentPut);
+
+    PaymentResponse getPayment(UUID paymentUid);
 }

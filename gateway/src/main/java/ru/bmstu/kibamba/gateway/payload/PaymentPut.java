@@ -1,6 +1,5 @@
-package ru.bmstu.kibamba.payment.payload;
+package ru.bmstu.kibamba.gateway.payload;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data

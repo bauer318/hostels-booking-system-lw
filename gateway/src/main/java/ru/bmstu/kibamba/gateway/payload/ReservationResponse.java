@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import ru.bmstu.kibamba.gateway.model.Hotel;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -18,6 +19,6 @@ public class ReservationResponse {
     private UUID paymentUid;
     private Hotel hotel;
     private String status;
-    private OffsetDateTime startDate;
-    private OffsetDateTime endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
 }

@@ -20,6 +20,12 @@ public class PaymentServiceImpl implements PaymentService {
         this.paymentRepository = paymentRepository;
     }
 
+    private Payment getOne(UUID paymentUid) {
+        return paymentRepository.findByPaymentUid(paymentUid).orElseThrow(
+                () -> new EntityNotFoundException("Not found payment by uid " + paymentUid)
+        );
+    }
+
     private PaymentResponse buildPaymentResponse(Payment payment) {
         return PaymentResponse.builder()
                 .id(payment.getId())
@@ -44,10 +50,13 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public PaymentResponse updatePayment(UUID paymentUid, PaymentPut paymentPut) {
-        Payment payment = paymentRepository.findByPaymentUid(paymentUid).orElseThrow(
-                () -> new EntityNotFoundException("Not found payment by uid " + paymentUid)
-        );
+        Payment payment = getOne(paymentUid);
         payment.setStatus(paymentPut.getStatus());
-        return null;
+        return buildPaymentResponse(paymentRepository.save(payment));
+    }
+
+    @Override
+    public PaymentResponse getPayment(UUID paymentUid) {
+        return buildPaymentResponse(getOne(paymentUid));
     }
 }

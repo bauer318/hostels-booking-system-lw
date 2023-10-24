@@ -36,6 +36,7 @@ public class LoyaltyServiceImpl implements LoyaltyService {
     @Override
     public LoyaltyResponse update(String username, LoyaltyPut loyaltyPut) {
         Loyalty loyalty = getOne(username);
+        loyalty.setReservationCount(loyaltyPut.getReservationCount());
         if (loyaltyPut.getReservationCount() < 0) {
             loyalty.setReservationCount(0);
         }

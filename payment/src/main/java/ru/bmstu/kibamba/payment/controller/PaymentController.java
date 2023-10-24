@@ -30,4 +30,9 @@ public class PaymentController {
                                                @RequestBody @Valid PaymentPut paymentPut) {
         return paymentService.updatePayment(paymentUid, paymentPut);
     }
+
+    @GetMapping(value = "/{paymentUid}", produces = "application/json")
+    public PaymentResponse getPayment(@PathVariable("paymentUid") UUID paymentUid) {
+        return paymentService.getPayment(paymentUid);
+    }
 }

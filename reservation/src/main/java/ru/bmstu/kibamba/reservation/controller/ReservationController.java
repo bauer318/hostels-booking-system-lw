@@ -33,7 +33,7 @@ public class ReservationController {
 
     @DeleteMapping("/{reservationUid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@RequestHeader("X-User-name") String xUserName, @PathVariable("reservationUid") UUID reservationUid) {
+    public void delete(@PathVariable("reservationUid") UUID reservationUid) {
         reservationService.deleteReservation(reservationUid);
     }
 }
