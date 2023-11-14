@@ -8,6 +8,7 @@ import ru.bmstu.kibamba.reservation.payload.request.ReservationRequest;
 import ru.bmstu.kibamba.reservation.payload.response.ReservationResponse;
 import ru.bmstu.kibamba.reservation.service.ReservationServiceImpl;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -20,9 +21,15 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
+    @GetMapping(value = "/{reservationUid}", produces = "application/json")
+    public ReservationResponse getReservation(@RequestHeader("X-User-Name") String xUserName,
+                                              @PathVariable("reservationUid") UUID reservationUid) {
+        return reservationService.getReservation(reservationUid);
+    }
+
     @GetMapping(produces = "application/json")
-    public ReservationResponse getReservation(@RequestHeader("X-User-Name") String xUserName) {
-        return reservationService.getReservation(xUserName);
+    public List<ReservationResponse> getReservations(@RequestHeader("X-User-Name") String xUserName) {
+        return reservationService.getReservations(xUserName);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")

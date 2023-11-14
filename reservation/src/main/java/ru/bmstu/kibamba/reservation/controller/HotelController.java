@@ -1,8 +1,10 @@
 package ru.bmstu.kibamba.reservation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import ru.bmstu.kibamba.reservation.payload.response.HotelResponse;
+import ru.bmstu.kibamba.reservation.payload.response.PaginationResponse;
 import ru.bmstu.kibamba.reservation.service.HotelServiceImpl;
 
 import java.util.List;
@@ -19,7 +21,8 @@ public class HotelController {
     }
 
     @GetMapping(produces = "application/json")
-    public List<HotelResponse> getHotels(@RequestParam("page") int page, @RequestParam("size") int size) {
+    public PaginationResponse getHotels(@RequestParam(required = false, defaultValue = "0") int page,
+                                        @RequestParam(required = false, defaultValue = "5") int size) {
         return hotelService.getHotels(page, size);
     }
 

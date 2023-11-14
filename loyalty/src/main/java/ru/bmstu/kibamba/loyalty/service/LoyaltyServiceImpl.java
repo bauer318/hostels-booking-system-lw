@@ -27,7 +27,6 @@ public class LoyaltyServiceImpl implements LoyaltyService {
         return LoyaltyResponse.builder()
                 .reservationCount(loyalty.getReservationCount())
                 .discount(loyalty.getDiscount())
-                .id(loyalty.getId())
                 .status(loyalty.getStatus())
                 .username(loyalty.getUsername())
                 .build();

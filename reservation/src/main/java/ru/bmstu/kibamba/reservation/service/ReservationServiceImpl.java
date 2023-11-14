@@ -8,7 +8,9 @@ import ru.bmstu.kibamba.reservation.payload.request.ReservationRequest;
 import ru.bmstu.kibamba.reservation.payload.response.ReservationResponse;
 import ru.bmstu.kibamba.reservation.repository.ReservationRepository;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -28,7 +30,6 @@ public class ReservationServiceImpl implements ReservationService {
                 .startDate(reservation.getStartDate())
                 .status(reservation.getStatus())
                 .hotel(reservation.getHotel())
-                .id(reservation.getId())
                 .endDate(reservation.getEndDate())
                 .reservationUid(reservation.getReservationUid())
                 .username(reservation.getUsername())
@@ -55,8 +56,21 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public ReservationResponse getReservation(UUID reservationUid) {
+        return buildReservationResponse(reservationRepository.findByReservationUid(reservationUid).orElseThrow(
+                () -> new EntityNotFoundException("Not found reservation by uid " + reservationUid)
+        ));
+    }
+
+    @Override
+    public List<ReservationResponse> getReservations(String username) {
+        return reservationRepository.findAllByUsername(username).stream()
+                .map(this::buildReservationResponse).collect(Collectors.toList());
+    }
+
+    @Override
     public ReservationResponse createReservation(String username, ReservationRequest reservationRequest) {
-        UUID hotelUid = reservationRequest.getHotel().getHostelUid();
+        UUID hotelUid = reservationRequest.getHotel().getHotelUid();
         if (!hotelService.existsByHostelUid(hotelUid)) {
             throw new EntityNotFoundException("Not exist hostel with uid " + hotelUid);
         }

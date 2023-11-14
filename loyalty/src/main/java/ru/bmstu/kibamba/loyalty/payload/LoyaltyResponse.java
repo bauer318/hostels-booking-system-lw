@@ -8,7 +8,6 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class LoyaltyResponse {
-    private Integer id;
     private String username;
     private Integer reservationCount;
     private String status;

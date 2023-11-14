@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.UUID;
 
@@ -18,8 +17,8 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "hostel_uid",nullable = false, unique = true)
-    private UUID hostelUid;
+    @Column(name = "hotel_uid",nullable = false, unique = true)
+    private UUID hotelUid;
 
     @Column(nullable = false)
     private String name;

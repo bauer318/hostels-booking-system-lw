@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.bmstu.kibamba.reservation.entity.Reservation;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -11,4 +12,5 @@ import java.util.UUID;
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
     Optional<Reservation> findByUsername(String username);
     Optional<Reservation> findByReservationUid(UUID reservationUid);
+    List<Reservation> findAllByUsername(String username);
 }

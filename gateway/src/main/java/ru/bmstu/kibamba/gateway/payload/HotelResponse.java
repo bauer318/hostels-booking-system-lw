@@ -12,7 +12,7 @@ import java.util.UUID;
 public class HotelResponse {
     private Integer id;
 
-    private UUID hostelUid;
+    private UUID hotelUid;
 
     private String name;
 

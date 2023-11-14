@@ -16,7 +16,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class ReservationResponse {
-    private Integer id;
     private UUID reservationUid;
     private String username;
     private UUID paymentUid;

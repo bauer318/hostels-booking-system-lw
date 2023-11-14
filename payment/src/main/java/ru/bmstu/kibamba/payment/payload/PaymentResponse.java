@@ -10,7 +10,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class PaymentResponse {
-    private Integer id;
     private UUID paymentUid;
     private String status;
     private Integer price;

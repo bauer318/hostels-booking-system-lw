@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class HotelRequest {
     @NotNull
-    private UUID hostelUid;
+    private UUID hotelUid;
     @NotBlank
     private String name;
     @NotBlank

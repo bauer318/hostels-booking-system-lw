@@ -28,7 +28,6 @@ public class PaymentServiceImpl implements PaymentService {
 
     private PaymentResponse buildPaymentResponse(Payment payment) {
         return PaymentResponse.builder()
-                .id(payment.getId())
                 .paymentUid(payment.getPaymentUid())
                 .price(payment.getPrice())
                 .status(payment.getStatus())

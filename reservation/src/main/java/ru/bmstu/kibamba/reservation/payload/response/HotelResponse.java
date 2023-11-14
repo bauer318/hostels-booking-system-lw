@@ -1,6 +1,5 @@
 package ru.bmstu.kibamba.reservation.payload.response;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,10 +10,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class HotelResponse {
-
     private Integer id;
-
-    private UUID hostelUid;
+    private UUID hotelUid;
 
     private String name;
 
