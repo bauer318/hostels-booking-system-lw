@@ -5,7 +5,6 @@
       <option name="customHeaders">
         <set>
           <option value="X-User-Name" />
-          <option value="X-User-name" />
         </set>
       </option>
     </inspection_tool>

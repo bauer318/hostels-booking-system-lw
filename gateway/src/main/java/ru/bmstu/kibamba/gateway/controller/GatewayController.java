@@ -14,7 +14,7 @@ import java.util.*;
 @RequestMapping("/api/v1")
 public class GatewayController {
     private final RestTemplate restTemplate;
-    private String baseUrl = "http://localhost:8080/api/v1";
+    private final String baseUrl = "http://localhost:8080/api/v1";
 
     public GatewayController(RestTemplateBuilder builder) {
         this.restTemplate = builder.build();
@@ -140,12 +140,41 @@ public class GatewayController {
 
 
     @GetMapping(value = "/reservations")
-    public ReservationResponse[] getReservations(@RequestHeader("X-User-Name") String xUserName) {
+    public List<ReservationFullResponse> getReservations(@RequestHeader("X-User-Name") String xUserName) {
         String uri = "http://localhost:8070/api/v1/reservations";
         HttpHeaders headers = createHeader(xUserName);
         HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
-        return restTemplate.exchange(uri, HttpMethod.GET, request, ReservationResponse[].class).getBody();
+        ReservationResponse[] reservationResponses = restTemplate.exchange(uri, HttpMethod.GET, request, ReservationResponse[].class).getBody();
+        List<ReservationFullResponse> results = new ArrayList<>();
+        assert reservationResponses != null;
+        for (ReservationResponse reservationResponse : reservationResponses) {
+            PaymentResponse payment = restTemplate.getForObject(baseUrl + "/payments/{paymentUid}",
+                    PaymentResponse.class, reservationResponse.getPaymentUid());
+            assert payment != null;
+            results.add(ReservationFullResponse
+                    .builder()
+                    .reservationUid(reservationResponse.getReservationUid())
+                    .endDate(reservationResponse.getEndDate())
+                    .hotel(HotelShortResponse.builder()
+                            .hotelUid(reservationResponse.getHotel().getHotelUid())
+                            .fullAddress(buildFullAddress(reservationResponse.getHotel()))
+                            .stars(reservationResponse.getHotel().getStars())
+                            .name(reservationResponse.getHotel().getName())
+                            .build())
+                    .payment(PaymentShortResponse
+                            .builder()
+                            .price(payment.getPrice())
+                            .status(payment.getStatus())
+                            .build())
+                    .startDate(reservationResponse.getStartDate())
+                    .status(reservationResponse.getStatus())
+                    .build());
+        }
+        return results;
+    }
 
+    private String buildFullAddress(Hotel hotel){
+        return hotel.getCountry().concat(", ").concat(hotel.getCity()).concat(", ").concat(hotel.getAddress());
     }
 
     @GetMapping(value = "/reservations/{reservationUid}")
@@ -156,12 +185,14 @@ public class GatewayController {
         HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
         ReservationResponse reservation = restTemplate
                 .exchange(uri, HttpMethod.GET, request, ReservationResponse.class, reservationUid).getBody();
+        assert reservation != null;
         PaymentResponse payment = restTemplate.getForObject(baseUrl + "/payments/{paymentUid}",
                 PaymentResponse.class, reservation.getPaymentUid());
 
         Hotel hotel = reservation.getHotel();
         String fullAddress = hotel.getCountry() + ", " + hotel.getCity() + ", " + hotel.getAddress();
 
+        assert payment != null;
         return ReservationShortResponse
                 .builder()
                 .reservationUid(reservationUid)
@@ -208,7 +239,7 @@ public class GatewayController {
         assert hotelResponse != null;
         Hotel hotel = buildHotel(hotelResponse);
         Integer price = hotel.getPrice();
-        Integer costWithoutDiscount = period.getDays() * price;
+        int costWithoutDiscount = period.getDays() * price;
 
         HttpHeaders headers = createHeader(username);
 
@@ -249,6 +280,7 @@ public class GatewayController {
         ReservationResponse reservationResponse =
                 restTemplate.exchange(uri, HttpMethod.POST, request, ReservationResponse.class).getBody();
 
+        assert reservationResponse != null;
         CreateReservationResponse createReservationResponse =
                 CreateReservationResponse.builder()
                         .reservationUid(reservationResponse.getReservationUid())

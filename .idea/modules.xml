@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/distributed-system-hostels-booking-system.iml" filepath="$PROJECT_DIR$/distributed-system-hostels-booking-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/hostels-booking-system-lw.iml" filepath="$PROJECT_DIR$/.idea/hostels-booking-system-lw.iml" />
     </modules>
   </component>
 </project>
