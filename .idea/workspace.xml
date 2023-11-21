@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added ReservationFullResponse">
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/LoyaltyShortResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/PaymentShortResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ReservationFullResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/UserInfoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/UserInfoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="second-lw" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -157,6 +152,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
       </list>
