@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added ReservationFullResponse">
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="second lw done">
       <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/LoyaltyShortResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -177,7 +177,7 @@
       <workItem from="1697561667769" duration="329000" />
       <workItem from="1697961842189" duration="29007000" />
       <workItem from="1698084859593" duration="17309000" />
-      <workItem from="1700523511019" duration="3612000" />
+      <workItem from="1700523511019" duration="3996000" />
     </task>
     <task id="LOCAL-00001" summary="added reservation and hotel entities">
       <option name="closed" value="true" />
@@ -219,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700008204966</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="second lw done">
+      <option name="closed" value="true" />
+      <created>1700527506864</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700527506864</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +262,7 @@
     <MESSAGE value="added payment loyalty entity" />
     <MESSAGE value="core done" />
     <MESSAGE value="added ReservationFullResponse" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ReservationFullResponse" />
+    <MESSAGE value="second lw done" />
+    <option name="LAST_COMMIT_MESSAGE" value="second lw done" />
   </component>
 </project>
