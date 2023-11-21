@@ -43,4 +43,10 @@ public class ReservationController {
     public void delete(@PathVariable("reservationUid") UUID reservationUid) {
         reservationService.deleteReservation(reservationUid);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/manage/health")
+    public String checkServiceAvailability(){
+        return "Reservation service is available";
+    }
 }

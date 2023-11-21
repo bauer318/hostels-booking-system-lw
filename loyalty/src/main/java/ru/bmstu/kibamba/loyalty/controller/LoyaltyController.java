@@ -1,6 +1,7 @@
 package ru.bmstu.kibamba.loyalty.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.bmstu.kibamba.loyalty.payload.LoyaltyPut;
 import ru.bmstu.kibamba.loyalty.payload.LoyaltyResponse;
@@ -20,6 +21,12 @@ public class LoyaltyController {
     @GetMapping(produces = "application/json")
     public LoyaltyResponse getLoyalty(@RequestHeader("X-User-Name") String username) {
         return loyaltyService.getLoyalty(username);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/manage/health")
+    public String checkServiceAvailability(){
+        return "Loyalty service is available";
     }
 
     @PutMapping(consumes = "application/json", produces = "application/json")

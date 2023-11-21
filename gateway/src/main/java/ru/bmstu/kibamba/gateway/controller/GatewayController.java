@@ -1,5 +1,7 @@
 package ru.bmstu.kibamba.gateway.controller;
 
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +17,16 @@ import java.util.*;
 public class GatewayController {
     private final RestTemplate restTemplate;
     private final String baseUrl = "http://localhost:8080/api/v1";
+    private final CircuitBreaker timeCircuitBreaker;
 
-    public GatewayController(RestTemplateBuilder builder) {
+    @Autowired
+    public GatewayController(RestTemplateBuilder builder, CircuitBreaker timeCircuitBreaker) {
         this.restTemplate = builder.build();
+        this.timeCircuitBreaker = timeCircuitBreaker;
+    }
+
+    private void fallbackTest(String message){
+        System.out.println(message);
     }
 
     private HttpHeaders createHeader(String xUserName) {

@@ -2,6 +2,7 @@ package ru.bmstu.kibamba.reservation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.bmstu.kibamba.reservation.payload.response.HotelResponse;
 import ru.bmstu.kibamba.reservation.payload.response.PaginationResponse;
@@ -29,6 +30,12 @@ public class HotelController {
     @GetMapping(value = "/{hotelUid}", produces = "application/json")
     public HotelResponse getHotel(@PathVariable("hotelUid") UUID hotelUid) {
         return hotelService.getHotel(hotelUid);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/manage/health")
+    public String checkServiceAvailability(){
+        return "Reservation [hotel] service is available";
     }
 
 }
