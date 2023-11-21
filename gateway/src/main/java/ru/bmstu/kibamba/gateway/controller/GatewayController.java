@@ -60,29 +60,20 @@ public class GatewayController {
         userInfo.setReservations(new ArrayList<>());
         HttpHeaders headers = createHeader(xUserName);
         HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
-        ReservationResponse[] reservations = restTemplate
-                .exchange(baseUrl + "/reservations", HttpMethod.GET, request,
-                        ReservationResponse[].class).getBody();
-        assert reservations != null;
-        for (ReservationResponse reservation : reservations) {
-            PaymentResponse payment = restTemplate.getForObject(baseUrl + "/payments/{paymentUid}",
-                    PaymentResponse.class, reservation.getPaymentUid());
-            userInfo.getReservations().add(
-                    ReservationLongResponse
-                            .builder()
-                            .reservationUid(reservation.getReservationUid())
-                            .startDate(reservation.getStartDate())
-                            .endDate(reservation.getEndDate())
-                            .status(reservation.getStatus())
-                            .hotel(reservation.getHotel())
-                            .payment(payment)
-                            .build()
-            );
-        }
+        ReservationShortResponse[] reservationShortResponses = restTemplate.exchange(
+                baseUrl+"/reservations",HttpMethod.GET,request,ReservationShortResponse[].class
+        ).getBody();
+        assert reservationShortResponses != null;
+        userInfo.getReservations().addAll(List.of(reservationShortResponses));
         LoyaltyInfoResponse loyalty = restTemplate.exchange(
                 baseUrl + "/loyalty", HttpMethod.GET, request, LoyaltyInfoResponse.class
         ).getBody();
-        userInfo.setLoyalty(loyalty);
+        assert loyalty != null;
+        userInfo.setLoyalty(LoyaltyShortResponse
+                .builder()
+                        .discount(loyalty.getDiscount())
+                        .status(loyalty.getStatus())
+                .build());
         return ResponseEntity.ok(userInfo);
     }
 
@@ -140,18 +131,18 @@ public class GatewayController {
 
 
     @GetMapping(value = "/reservations")
-    public List<ReservationFullResponse> getReservations(@RequestHeader("X-User-Name") String xUserName) {
+    public List<ReservationShortResponse> getReservations(@RequestHeader("X-User-Name") String xUserName) {
         String uri = "http://localhost:8070/api/v1/reservations";
         HttpHeaders headers = createHeader(xUserName);
         HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
         ReservationResponse[] reservationResponses = restTemplate.exchange(uri, HttpMethod.GET, request, ReservationResponse[].class).getBody();
-        List<ReservationFullResponse> results = new ArrayList<>();
+        List<ReservationShortResponse> results = new ArrayList<>();
         assert reservationResponses != null;
         for (ReservationResponse reservationResponse : reservationResponses) {
             PaymentResponse payment = restTemplate.getForObject(baseUrl + "/payments/{paymentUid}",
                     PaymentResponse.class, reservationResponse.getPaymentUid());
             assert payment != null;
-            results.add(ReservationFullResponse
+            results.add(ReservationShortResponse
                     .builder()
                     .reservationUid(reservationResponse.getReservationUid())
                     .endDate(reservationResponse.getEndDate())
@@ -161,7 +152,7 @@ public class GatewayController {
                             .stars(reservationResponse.getHotel().getStars())
                             .name(reservationResponse.getHotel().getName())
                             .build())
-                    .payment(PaymentShortResponse
+                    .payment(PaymentInfoResponse
                             .builder()
                             .price(payment.getPrice())
                             .status(payment.getStatus())
@@ -178,13 +169,9 @@ public class GatewayController {
     }
 
     @GetMapping(value = "/reservations/{reservationUid}")
-    public ReservationShortResponse getReservation(@RequestHeader("X-User-Name") String username,
+    public ReservationShortResponse getReservation(@RequestHeader("X-User-Name") String xUserName,
                                                    @PathVariable("reservationUid") UUID reservationUid) {
-        String uri = "http://localhost:8070/api/v1/reservations/{reservationUid}";
-        HttpHeaders headers = createHeader(username);
-        HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
-        ReservationResponse reservation = restTemplate
-                .exchange(uri, HttpMethod.GET, request, ReservationResponse.class, reservationUid).getBody();
+        ReservationResponse reservation = getReservationLong(xUserName, reservationUid);
         assert reservation != null;
         PaymentResponse payment = restTemplate.getForObject(baseUrl + "/payments/{paymentUid}",
                 PaymentResponse.class, reservation.getPaymentUid());
@@ -213,16 +200,14 @@ public class GatewayController {
                         .build()
                 )
                 .build();
+    }
 
-
-        /*return ReservationLongResponse.builder()
-                .payment(payment)
-                .status(reservation.getStatus())
-                .reservationUid(reservationUid)
-                .startDate(reservation.getStartDate())
-                .endDate(reservation.getEndDate())
-                .hotel(reservation.getHotel())
-                .build();*/
+    private ReservationResponse getReservationLong(String xUserName, UUID reservationUid){
+        String uri = "http://localhost:8070/api/v1/reservations/{reservationUid}";
+        HttpHeaders headers = createHeader(xUserName);
+        HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
+        return restTemplate
+                .exchange(uri, HttpMethod.GET, request, ReservationResponse.class, reservationUid).getBody();
     }
 
     @PostMapping(value = "/reservations", consumes = "application/json", produces = "application/json")
@@ -299,18 +284,18 @@ public class GatewayController {
 
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/reservations/{reservationUid}")
     public void cancelReservation(@RequestHeader("X-User-Name") String xUserName,
                                   @PathVariable("reservationUid") UUID reservationUid) {
         HttpHeaders headers = createHeader(xUserName);
-        HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
+        ReservationResponse reservation = getReservationLong(xUserName, reservationUid);
+        assert reservation != null;
+        PaymentResponse payment = restTemplate.getForObject(baseUrl + "/payments/{paymentUid}",
+                PaymentResponse.class, reservation.getPaymentUid());
 
-        ReservationResponse reservationResponse = restTemplate.exchange(
-                baseUrl + "/reservations", HttpMethod.GET, request, ReservationResponse.class
-        ).getBody();
-
-        assert reservationResponse != null;
-        UUID paymentUid = reservationResponse.getPaymentUid();
+        assert payment != null;
+        UUID paymentUid = payment.getPaymentUid();
 
         HttpHeaders paymentHeaders = createHeader();
 
@@ -333,8 +318,8 @@ public class GatewayController {
 
         restTemplate.exchange(baseUrl + "/loyalty", HttpMethod.PUT, loyaltyRequest, LoyaltyInfoResponse.class);
 
-        String uri = "http://localhost:8070/api/v1/reservations/{reservationUid}";
-        restTemplate.delete(uri, reservationUid);
+        String uriToDelete = "http://localhost:8070/api/v1/reservations/{reservationUid}";
+        restTemplate.delete(uriToDelete, reservationUid);
 
     }
 

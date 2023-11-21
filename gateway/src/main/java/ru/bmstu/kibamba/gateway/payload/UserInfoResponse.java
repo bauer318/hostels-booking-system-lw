@@ -10,6 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserInfoResponse {
-    private List<ReservationLongResponse> reservations;
-    private LoyaltyInfoResponse loyalty;
+    private List<ReservationShortResponse> reservations;
+    private LoyaltyShortResponse loyalty;
 }
