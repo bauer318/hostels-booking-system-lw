@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added circuit breaker dependency">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/config/CircuitBreakerConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
-    </list>
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added circuit breaker dependency" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
