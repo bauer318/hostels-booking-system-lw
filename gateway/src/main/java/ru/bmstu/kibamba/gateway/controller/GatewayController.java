@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import ru.bmstu.kibamba.gateway.model.Hotel;
 import ru.bmstu.kibamba.gateway.payload.*;
+import ru.bmstu.kibamba.gateway.service.GatewayService;
 
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,59 +18,21 @@ import java.util.UUID;
 @RequestMapping("/api/v1")
 public class GatewayController {
     private final RestTemplate restTemplate;
+    private final GatewayService gatewayService;
     private final String baseUrl = "http://localhost:8080/api/v1";
 
     @Autowired
-    public GatewayController(RestTemplateBuilder builder) {
+    public GatewayController(RestTemplateBuilder builder,
+                             GatewayService gatewayService) {
         this.restTemplate = builder.build();
-    }
-
-    private PaymentResponse fallbackTest(Throwable throwable){
-        PaymentResponse paymentResponse = new PaymentResponse();
-        paymentResponse.setStatus("");
-        paymentResponse.setPrice(0);
-        return paymentResponse;
-    }
-
-    private HttpHeaders createHeader(String xUserName) {
-        HttpHeaders headers = createHeader();
-        headers.set("X-User-Name", xUserName);
-        return headers;
-    }
-
-    private HttpHeaders createHeader() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        return headers;
-    }
-
-    private PaymentRequest createPayment(Integer price) {
-        PaymentRequest paymentRequest = new PaymentRequest();
-        paymentRequest.setPaymentUid(UUID.randomUUID());
-        paymentRequest.setStatus("PAID");
-        paymentRequest.setPrice(price);
-        return paymentRequest;
-    }
-
-    private Hotel buildHotel(HotelResponse hotelResponse) {
-        return Hotel.builder()
-                .id(hotelResponse.getId())
-                .stars(hotelResponse.getStars())
-                .name(hotelResponse.getName())
-                .address(hotelResponse.getAddress())
-                .country(hotelResponse.getCountry())
-                .city(hotelResponse.getCity())
-                .hotelUid(hotelResponse.getHotelUid())
-                .price(hotelResponse.getPrice())
-                .build();
+        this.gatewayService = gatewayService;
     }
 
     @GetMapping(value = "/me", produces = "application/json")
     public ResponseEntity<UserInfoResponse> getMe(@RequestHeader("X-User-Name") String xUserName) {
         UserInfoResponse userInfo = new UserInfoResponse();
         userInfo.setReservations(new ArrayList<>());
-        HttpHeaders headers = createHeader(xUserName);
+        HttpHeaders headers = gatewayService.createHeader(xUserName);
         HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
         ReservationShortResponse[] reservationShortResponses = restTemplate.exchange(
                 baseUrl+"/reservations",HttpMethod.GET,request,ReservationShortResponse[].class
@@ -107,7 +69,7 @@ public class GatewayController {
     @GetMapping(value = "/loyalty", produces = "application/json")
     public LoyaltyInfoResponse getLoyalty(@RequestHeader("X-User-Name") String xUserName) {
         String uri = "http://localhost:8050/api/v1/loyalty";
-        HttpHeaders headers = createHeader(xUserName);
+        HttpHeaders headers = gatewayService.createHeader(xUserName);
         HttpEntity<HttpHeaders> entity = new HttpEntity<>(headers);
         return restTemplate.exchange(uri, HttpMethod.GET, entity, LoyaltyInfoResponse.class).getBody();
     }
@@ -115,38 +77,15 @@ public class GatewayController {
     @PutMapping(value = "/loyalty", consumes = "application/json", produces = "application/json")
     public LoyaltyInfoResponse updateLoyalty(@RequestHeader("X-User-Name") String xUserName, @RequestBody LoyaltyPut loyaltyPut) {
         String uri = "http://localhost:8050/api/v1/loyalty";
-        HttpHeaders headers = createHeader(xUserName);
+        HttpHeaders headers = gatewayService.createHeader(xUserName);
         HttpEntity<LoyaltyPut> entity = new HttpEntity<>(loyaltyPut, headers);
         return restTemplate.exchange(uri, HttpMethod.PUT, entity, LoyaltyInfoResponse.class).getBody();
     }
 
-    @PostMapping(value = "/payments", consumes = "application/json", produces = "application/json")
-    public PaymentResponse createPayment(@RequestBody PaymentRequest paymentRequest) {
-        String uri = "http://localhost:8060/api/v1/payments";
-        HttpEntity<PaymentRequest> request = new HttpEntity<>(paymentRequest);
-        return restTemplate.postForObject(uri, request, PaymentResponse.class);
-    }
-
-    @PutMapping(value = "/payments/{paymentUid}", consumes = "application/json", produces = "application/json")
-    public PaymentResponse updatePayment(@PathVariable("paymentUid") UUID paymentUid, @RequestBody PaymentPut paymentPut) {
-        String uri = "http://localhost:8060/api/v1/payments/{paymentUid}";
-        HttpHeaders headers = createHeader();
-        HttpEntity<PaymentPut> entity = new HttpEntity<>(paymentPut, headers);
-        return restTemplate.exchange(uri, HttpMethod.PUT, entity, PaymentResponse.class, paymentUid).getBody();
-    }
-
-    @GetMapping(value = "/payments/{paymentUid}")
-    @io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker(name = "paymentCb", fallbackMethod = "fallbackTest")
-    public PaymentResponse getPayment(@PathVariable("paymentUid") UUID paymentUid) {
-        String uri = "http://localhost:8060/api/v1/payments/{paymentUid}";
-        return restTemplate.getForObject(uri, PaymentResponse.class, paymentUid);
-    }
-
-
     @GetMapping(value = "/reservations")
     public List<ReservationShortResponse> getReservations(@RequestHeader("X-User-Name") String xUserName) {
         String uri = "http://localhost:8070/api/v1/reservations";
-        HttpHeaders headers = createHeader(xUserName);
+        HttpHeaders headers =gatewayService.createHeader(xUserName);
         HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
         ReservationResponse[] reservationResponses = restTemplate.exchange(uri, HttpMethod.GET, request, ReservationResponse[].class).getBody();
         List<ReservationShortResponse> results = new ArrayList<>();
@@ -217,7 +156,7 @@ public class GatewayController {
 
     private ReservationResponse getReservationLong(String xUserName, UUID reservationUid){
         String uri = "http://localhost:8070/api/v1/reservations/{reservationUid}";
-        HttpHeaders headers = createHeader(xUserName);
+        HttpHeaders headers = gatewayService.createHeader(xUserName);
         HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
         return restTemplate
                 .exchange(uri, HttpMethod.GET, request, ReservationResponse.class, reservationUid).getBody();
@@ -235,11 +174,11 @@ public class GatewayController {
 
 
         assert hotelResponse != null;
-        Hotel hotel = buildHotel(hotelResponse);
+        Hotel hotel = gatewayService.buildHotel(hotelResponse);
         Integer price = hotel.getPrice();
         int costWithoutDiscount = period.getDays() * price;
 
-        HttpHeaders headers = createHeader(username);
+        HttpHeaders headers = gatewayService.createHeader(username);
 
         HttpEntity<HttpHeaders> loyaltyEntity = new HttpEntity<>(headers);
 
@@ -248,7 +187,7 @@ public class GatewayController {
         assert loyaltyResponse != null;
         Integer constWithDiscount = costWithoutDiscount - (costWithoutDiscount * loyaltyResponse.getDiscount() / 100);
 
-        PaymentRequest paymentRequest = createPayment(constWithDiscount);
+        PaymentRequest paymentRequest = gatewayService.createPayment(constWithDiscount);
 
         HttpEntity<PaymentRequest> entityPayment = new HttpEntity<>(paymentRequest);
 
@@ -301,7 +240,7 @@ public class GatewayController {
     @DeleteMapping("/reservations/{reservationUid}")
     public void cancelReservation(@RequestHeader("X-User-Name") String xUserName,
                                   @PathVariable("reservationUid") UUID reservationUid) {
-        HttpHeaders headers = createHeader(xUserName);
+        HttpHeaders headers = gatewayService.createHeader(xUserName);
         ReservationResponse reservation = getReservationLong(xUserName, reservationUid);
         assert reservation != null;
         PaymentResponse payment = restTemplate.getForObject(baseUrl + "/payments/{paymentUid}",
@@ -310,7 +249,7 @@ public class GatewayController {
         assert payment != null;
         UUID paymentUid = payment.getPaymentUid();
 
-        HttpHeaders paymentHeaders = createHeader();
+        HttpHeaders paymentHeaders = gatewayService.createHeader();
 
         PaymentPut paymentPut = new PaymentPut();
         paymentPut.setStatus("CANCELED");
