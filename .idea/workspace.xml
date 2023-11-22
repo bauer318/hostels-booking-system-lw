@@ -4,40 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="core done">
-      <change afterPath="$PROJECT_DIR$/gateway/postman/collection.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/postman/environment.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/CreateReservationResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/HotelShortResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/PaginationResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/PaymentInfoResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ReservationLongResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ReservationShortResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/UserInfoResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/response/PaginationResponse.java" afterDir="false" />
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added circuit breaker dependency">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/config/CircuitBreakerConfiguration.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/model/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/HotelResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/HotelResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/LoyaltyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/LoyaltyInfoResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ReservationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/CreateReservationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/payload/LoyaltyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/payload/LoyaltyResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/service/LoyaltyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/loyalty/src/main/java/ru/bmstu/kibamba/loyalty/service/LoyaltyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/payload/PaymentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/payload/PaymentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/service/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/ru/bmstu/kibamba/payment/service/PaymentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/controller/HotelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/controller/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/entity/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/entity/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/request/HotelRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/request/HotelRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/response/HotelResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/response/HotelResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/response/ReservationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/payload/response/ReservationResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/repository/HotelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/repository/HotelRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/repository/ReservationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/repository/ReservationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/HotelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="second-lw" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -125,7 +97,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ReservationApplication">
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ru.bmstu.kibamba.gateway.GatewayApplication" />
@@ -185,6 +157,8 @@
       <list>
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -203,9 +177,8 @@
       <workItem from="1697561667769" duration="329000" />
       <workItem from="1697961842189" duration="29007000" />
       <workItem from="1698084859593" duration="17309000" />
-      <workItem from="1698132669152" duration="19640000" />
-      <workItem from="1699361240329" duration="297000" />
-      <workItem from="1699433538178" duration="110000" />
+      <workItem from="1700523511019" duration="3612000" />
+      <workItem from="1700609208354" duration="5593000" />
     </task>
     <task id="LOCAL-00001" summary="added reservation and hotel entities">
       <option name="closed" value="true" />
@@ -239,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698018021773</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added ReservationFullResponse">
+      <option name="closed" value="true" />
+      <created>1700008204966</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700008204966</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,17 +254,7 @@
     <MESSAGE value="added payment entity" />
     <MESSAGE value="added payment loyalty entity" />
     <MESSAGE value="core done" />
-    <option name="LAST_COMMIT_MESSAGE" value="core done" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationServiceImpl.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="added ReservationFullResponse" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ReservationFullResponse" />
   </component>
 </project>

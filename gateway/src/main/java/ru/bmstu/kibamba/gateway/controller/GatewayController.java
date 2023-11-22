@@ -1,6 +1,5 @@
 package ru.bmstu.kibamba.gateway.controller;
 
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
@@ -10,23 +9,27 @@ import ru.bmstu.kibamba.gateway.model.Hotel;
 import ru.bmstu.kibamba.gateway.payload.*;
 
 import java.time.Period;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1")
 public class GatewayController {
     private final RestTemplate restTemplate;
     private final String baseUrl = "http://localhost:8080/api/v1";
-    private final CircuitBreaker timeCircuitBreaker;
 
     @Autowired
-    public GatewayController(RestTemplateBuilder builder, CircuitBreaker timeCircuitBreaker) {
+    public GatewayController(RestTemplateBuilder builder) {
         this.restTemplate = builder.build();
-        this.timeCircuitBreaker = timeCircuitBreaker;
     }
 
-    private void fallbackTest(String message){
-        System.out.println(message);
+    private PaymentResponse fallbackTest(Throwable throwable){
+        PaymentResponse paymentResponse = new PaymentResponse();
+        paymentResponse.setStatus("");
+        paymentResponse.setPrice(0);
+        return paymentResponse;
     }
 
     private HttpHeaders createHeader(String xUserName) {
@@ -133,6 +136,7 @@ public class GatewayController {
     }
 
     @GetMapping(value = "/payments/{paymentUid}")
+    @io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker(name = "paymentCb", fallbackMethod = "fallbackTest")
     public PaymentResponse getPayment(@PathVariable("paymentUid") UUID paymentUid) {
         String uri = "http://localhost:8060/api/v1/payments/{paymentUid}";
         return restTemplate.getForObject(uri, PaymentResponse.class, paymentUid);
