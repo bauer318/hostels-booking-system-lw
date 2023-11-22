@@ -1,11 +1,11 @@
 package ru.bmstu.kibamba.gateway.controller;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import ru.bmstu.kibamba.gateway.payload.PaymentInfoResponse;
 import ru.bmstu.kibamba.gateway.payload.PaymentPut;
 import ru.bmstu.kibamba.gateway.payload.PaymentRequest;
 import ru.bmstu.kibamba.gateway.payload.PaymentResponse;
@@ -15,14 +15,15 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/payments")
-public class PaymentController {
+@Slf4j
+public class PaymentServiceController {
     private final RestTemplate restTemplate;
     private final GatewayService gatewayService;
     private final String baseUrl = "http://localhost:8060/api/v1/payments";
     private int count = 0;
 
     @Autowired
-    public PaymentController(RestTemplate restTemplate, GatewayService gatewayService) {
+    public PaymentServiceController(RestTemplate restTemplate, GatewayService gatewayService) {
         this.restTemplate = restTemplate;
         this.gatewayService = gatewayService;
     }
@@ -42,30 +43,31 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/{paymentUid}")
-    //@io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker(name = "paymentCb", fallbackMethod = "fallbackTest")
     public PaymentResponse getPayment(@PathVariable("paymentUid") UUID paymentUid) {
-        String uri = baseUrl.concat("/{paymentUid}");
-        String healthUri = baseUrl.concat("/manage/health");
-        PaymentResponse result = null;
-        try {
-            ResponseEntity<String> str = restTemplate.getForEntity(healthUri, String.class);
-            result = restTemplate.getForObject(uri, PaymentResponse.class, paymentUid);
-            System.out.println(str.getBody());
-            System.out.println(str.getStatusCode());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            count++;
-            if (count == 2) {
-                System.out.println("Pause");
-            }
+        if (count < 2) {
+            checkServiceAvailability();
+            String uri = baseUrl.concat("/{paymentUid}");
+            return restTemplate.getForObject(uri, PaymentResponse.class, paymentUid);
+        } else {
+            return fallbackTest();
         }
-        return result;
     }
 
-    private PaymentResponse fallbackTest(Throwable throwable) {
+    private PaymentResponse fallbackTest() {
         PaymentResponse paymentResponse = new PaymentResponse();
         paymentResponse.setStatus("");
         paymentResponse.setPrice(0);
         return paymentResponse;
+    }
+
+    private void checkServiceAvailability() {
+        try {
+            String healthUri = baseUrl.concat("/manage/health");
+            restTemplate.getForEntity(healthUri, String.class);
+            count = 0;
+        } catch (Exception e) {
+            count++;
+            log.info("service not available {}", e.getMessage());
+        }
     }
 }
