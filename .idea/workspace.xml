@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added circuit breaker dependency">
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="separated gateway controllers">
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/ExceptionHandlerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/exception/ServiceUnavailableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/faulttolerance/FTCircuitBreaker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/faulttolerance/FTCircuitBreakerState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/faulttolerance/FTCommandState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/faulttolerance/FTDelayedCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ExceptionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/53a6004a-ce20-4913-94c0-d9883d4f10af.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/53a6004a-ce20-4913-94c0-d9883d4f10af.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_23,_2_17_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_23__2_17_AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/config/CircuitBreakerConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/PaymentServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/PaymentServiceController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -97,7 +107,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+  <component name="RunManager" selected="Spring Boot.GatewayApplication">
     <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ru.bmstu.kibamba.gateway.GatewayApplication" />
@@ -179,6 +189,7 @@
       <workItem from="1698084859593" duration="17309000" />
       <workItem from="1700523511019" duration="3612000" />
       <workItem from="1700609208354" duration="5593000" />
+      <workItem from="1701759221950" duration="9073000" />
     </task>
     <task id="LOCAL-00001" summary="added reservation and hotel entities">
       <option name="closed" value="true" />
@@ -220,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700008204966</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="separated gateway controllers">
+      <option name="closed" value="true" />
+      <created>1700670873567</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700670873567</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,6 +274,7 @@
     <MESSAGE value="added payment loyalty entity" />
     <MESSAGE value="core done" />
     <MESSAGE value="added ReservationFullResponse" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ReservationFullResponse" />
+    <MESSAGE value="separated gateway controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="separated gateway controllers" />
   </component>
 </project>

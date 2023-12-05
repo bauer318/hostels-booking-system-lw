@@ -11,15 +11,9 @@
 13464||10|c|G
 13464||10|C|G
 13464||10|T|G</Grants>
-<<<<<<< HEAD
       <IntrospectionStateNumber>501</IntrospectionStateNumber>
       <ServerVersion>13.12</ServerVersion>
       <StartupTime>1700004961</StartupTime>
-=======
-      <IntrospectionStateNumber>541</IntrospectionStateNumber>
-      <ServerVersion>13.12</ServerVersion>
-      <StartupTime>1700644679</StartupTime>
->>>>>>> origin/dev
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -818,7 +812,6 @@ false posixrules
 13181||10|C|G
 13181||-9223372036854775808|U|G
 13181||10|U|G</Grants>
-<<<<<<< HEAD
       <IntrospectionStateNumber>501</IntrospectionStateNumber>
       <ObjectId>13465</ObjectId>
       <OwnerName>postgres</OwnerName>
@@ -830,40 +823,6 @@ false posixrules
       <ObjectId>4569</ObjectId>
     </role>
     <role id="5" parent="1" name="postgres">
-=======
-      <IntrospectionStateNumber>541</IntrospectionStateNumber>
-      <ObjectId>13465</ObjectId>
-      <OwnerName>postgres</OwnerName>
-    </database>
-    <role id="3" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
-    </role>
-    <role id="4" parent="1" name="pg_monitor">
-      <ObjectId>3373</ObjectId>
-      <RoleGrants>3374
-3375
-3377</RoleGrants>
-    </role>
-    <role id="5" parent="1" name="pg_read_all_settings">
-      <ObjectId>3374</ObjectId>
-    </role>
-    <role id="6" parent="1" name="pg_read_all_stats">
-      <ObjectId>3375</ObjectId>
-    </role>
-    <role id="7" parent="1" name="pg_read_server_files">
-      <ObjectId>4569</ObjectId>
-    </role>
-    <role id="8" parent="1" name="pg_signal_backend">
-      <ObjectId>4200</ObjectId>
-    </role>
-    <role id="9" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
-    </role>
-    <role id="10" parent="1" name="pg_write_server_files">
-      <ObjectId>4570</ObjectId>
-    </role>
-    <role id="11" parent="1" name="postgres">
->>>>>>> origin/dev
       <BypassRls>1</BypassRls>
       <CanLogin>1</CanLogin>
       <CreateDb>1</CreateDb>
@@ -872,7 +831,6 @@ false posixrules
       <Replication>1</Replication>
       <SuperRole>1</SuperRole>
     </role>
-<<<<<<< HEAD
     <role id="6" parent="1" name="pg_write_server_files">
       <ObjectId>4570</ObjectId>
     </role>
@@ -894,8 +852,6 @@ false posixrules
     <role id="11" parent="1" name="pg_stat_scan_tables">
       <ObjectId>3377</ObjectId>
     </role>
-=======
->>>>>>> origin/dev
     <tablespace id="12" parent="1" name="pg_default">
       <ObjectId>1663</ObjectId>
       <StateNumber>1</StateNumber>
@@ -4182,52 +4138,31 @@ false posixrules
     <schema id="252" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-<<<<<<< HEAD
       <IntrospectionStateNumber>501</IntrospectionStateNumber>
       <IntrospectionTimestamp>2023-11-15.02:44:35.249</IntrospectionTimestamp>
       <LocalIntrospectionTimestamp>2023-11-14.23:44:36</LocalIntrospectionTimestamp>
-=======
-      <IntrospectionStateNumber>541</IntrospectionStateNumber>
-      <IntrospectionTimestamp>2023-11-22.12:45:33.316</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-11-22.09:47:08</LocalIntrospectionTimestamp>
->>>>>>> origin/dev
       <ObjectId>2200</ObjectId>
       <StateNumber>287</StateNumber>
       <OwnerName>postgres</OwnerName>
     </schema>
     <sequence id="253" parent="252" name="hostels_seq">
       <DasType>bigint|0s</DasType>
-<<<<<<< HEAD
       <ObjectId>16421</ObjectId>
       <SequenceIdentity>1(1)+50</SequenceIdentity>
       <StartValue>1</StartValue>
       <StateNumber>498</StateNumber>
-=======
-      <ObjectId>16442</ObjectId>
-      <SequenceIdentity>1(1)+50</SequenceIdentity>
-      <StartValue>1</StartValue>
-      <StateNumber>538</StateNumber>
->>>>>>> origin/dev
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="254" parent="252" name="loyalty_seq">
       <DasType>bigint|0s</DasType>
-<<<<<<< HEAD
       <ObjectId>16393</ObjectId>
       <SequenceIdentity>1(1)+50</SequenceIdentity>
       <StartValue>1</StartValue>
       <StateNumber>489</StateNumber>
-=======
-      <ObjectId>16414</ObjectId>
-      <SequenceIdentity>1(1)+50</SequenceIdentity>
-      <StartValue>1</StartValue>
-      <StateNumber>529</StateNumber>
->>>>>>> origin/dev
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="255" parent="252" name="payment_seq">
       <DasType>bigint|0s</DasType>
-<<<<<<< HEAD
       <ObjectId>16401</ObjectId>
       <SequenceIdentity>1(1)+50</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4371,170 +4306,10 @@ false posixrules
       <TypeId>23</TypeId>
     </column>
     <column id="276" parent="258" name="reservation_count">
-=======
-      <ObjectId>16422</ObjectId>
-      <SequenceIdentity>1(1)+50</SequenceIdentity>
-      <StartValue>1</StartValue>
-      <StateNumber>531</StateNumber>
-      <OwnerName>postgres</OwnerName>
-    </sequence>
-    <sequence id="256" parent="252" name="persons_id_seq">
-      <DasType>integer|0s</DasType>
-      <ObjectId>16384</ObjectId>
-      <SequenceIdentity>1(13)</SequenceIdentity>
-      <StartValue>1</StartValue>
-      <StateNumber>489</StateNumber>
-      <OwnerName>postgres</OwnerName>
-    </sequence>
-    <sequence id="257" parent="252" name="reservation_seq">
-      <DasType>bigint|0s</DasType>
-      <ObjectId>16444</ObjectId>
-      <SequenceIdentity>1(1)+50</SequenceIdentity>
-      <StartValue>1</StartValue>
-      <StateNumber>539</StateNumber>
-      <OwnerName>postgres</OwnerName>
-    </sequence>
-    <table id="258" parent="252" name="hostels">
-      <ObjectId>16424</ObjectId>
-      <StateNumber>540</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
-    </table>
-    <table id="259" parent="252" name="loyalty">
-      <ObjectId>16405</ObjectId>
-      <StateNumber>526</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
-    </table>
-    <table id="260" parent="252" name="payment">
-      <ObjectId>16416</ObjectId>
-      <StateNumber>530</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
-    </table>
-    <table id="261" parent="252" name="persons">
-      <ObjectId>16386</ObjectId>
-      <StateNumber>491</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
-    </table>
-    <table id="262" parent="252" name="reservation">
-      <ObjectId>16432</ObjectId>
-      <StateNumber>540</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
-    </table>
-    <column id="263" parent="258" name="id">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>532</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="264" parent="258" name="address">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>532</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="265" parent="258" name="city">
-      <DasType>varchar(80)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>532</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="266" parent="258" name="country">
-      <DasType>varchar(80)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>532</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="267" parent="258" name="hotel_uid">
-      <DasType>uuid|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>532</StateNumber>
-      <TypeId>2950</TypeId>
-    </column>
-    <column id="268" parent="258" name="name">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-      <StateNumber>532</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="269" parent="258" name="price">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>7</Position>
-      <StateNumber>532</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="270" parent="258" name="stars">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>8</Position>
-      <StateNumber>532</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <index id="271" parent="258" name="hostels_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16430</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>532</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="272" parent="258" name="uk_1vsdpv7d3740temx8l4nfebi5">
-      <ColNames>hotel_uid</ColNames>
-      <ObjectId>16438</ObjectId>
-      <StateNumber>535</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="273" parent="258" name="hostels_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16431</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>532</StateNumber>
-      <UnderlyingIndexId>16430</UnderlyingIndexId>
-    </key>
-    <key id="274" parent="258" name="uk_1vsdpv7d3740temx8l4nfebi5">
-      <ObjectId>16439</ObjectId>
-      <StateNumber>535</StateNumber>
-      <UnderlyingIndexId>16438</UnderlyingIndexId>
-    </key>
-    <check id="275" parent="259" name="loyalty_status_check">
-      <ColNames>status</ColNames>
-      <ObjectId>16409</ObjectId>
-      <Predicate>(status)::text = ANY ((ARRAY[&apos;BRONZE&apos;::character varying, &apos;SILVER&apos;::character varying, &apos;GOLD&apos;::character varying])::text[])</Predicate>
-      <StateNumber>526</StateNumber>
-    </check>
-    <column id="276" parent="259" name="id">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>526</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="277" parent="259" name="discount">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>526</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="278" parent="259" name="reservation_count">
->>>>>>> origin/dev
       <DasType>integer|0s</DasType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
-<<<<<<< HEAD
       <StateNumber>486</StateNumber>
       <TypeId>23</TypeId>
     </column>
@@ -4565,45 +4340,12 @@ false posixrules
       <ColNames>username</ColNames>
       <ObjectId>16391</ObjectId>
       <StateNumber>488</StateNumber>
-=======
-      <StateNumber>526</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="279" parent="259" name="status">
-      <DasType>varchar(20)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>526</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="280" parent="259" name="username">
-      <DasType>varchar(80)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>526</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <index id="281" parent="259" name="loyalty_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16410</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>526</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="282" parent="259" name="uk_d1n4akc3rbc310hw8nb9r4pc7">
-      <ColNames>username</ColNames>
-      <ObjectId>16412</ObjectId>
-      <StateNumber>528</StateNumber>
->>>>>>> origin/dev
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-<<<<<<< HEAD
     <key id="281" parent="258" name="loyalty_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16390</ObjectId>
@@ -4760,227 +4502,6 @@ false posixrules
       <ObjectId>16420</ObjectId>
       <StateNumber>497</StateNumber>
       <UnderlyingIndexId>16419</UnderlyingIndexId>
-=======
-    <key id="283" parent="259" name="loyalty_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16411</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>526</StateNumber>
-      <UnderlyingIndexId>16410</UnderlyingIndexId>
-    </key>
-    <key id="284" parent="259" name="uk_d1n4akc3rbc310hw8nb9r4pc7">
-      <ObjectId>16413</ObjectId>
-      <StateNumber>528</StateNumber>
-      <UnderlyingIndexId>16412</UnderlyingIndexId>
-    </key>
-    <check id="285" parent="260" name="payment_status_check">
-      <ColNames>status</ColNames>
-      <ObjectId>16419</ObjectId>
-      <Predicate>(status)::text = ANY ((ARRAY[&apos;PAID&apos;::character varying, &apos;CANCELED&apos;::character varying])::text[])</Predicate>
-      <StateNumber>530</StateNumber>
-    </check>
-    <column id="286" parent="260" name="id">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>530</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="287" parent="260" name="payment_uid">
-      <DasType>uuid|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>530</StateNumber>
-      <TypeId>2950</TypeId>
-    </column>
-    <column id="288" parent="260" name="price">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>530</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="289" parent="260" name="status">
-      <DasType>varchar(20)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>530</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <index id="290" parent="260" name="payment_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16420</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>530</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="291" parent="260" name="payment_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16421</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>530</StateNumber>
-      <UnderlyingIndexId>16420</UnderlyingIndexId>
-    </key>
-    <column id="292" parent="261" name="id">
-      <DasType>integer|0s</DasType>
-      <DefaultExpression>nextval(&apos;persons_id_seq&apos;::regclass)</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>489</StateNumber>
-      <SequenceId>16384</SequenceId>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="293" parent="261" name="name">
-      <DasType>varchar(80)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>489</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="294" parent="261" name="address">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>3</Position>
-      <StateNumber>489</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="295" parent="261" name="age">
-      <DasType>integer|0s</DasType>
-      <Position>4</Position>
-      <StateNumber>489</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="296" parent="261" name="work">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>5</Position>
-      <StateNumber>491</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <index id="297" parent="261" name="persons_pk">
-      <ColNames>id</ColNames>
-      <ObjectId>16390</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>491</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="298" parent="261" name="persons_pk2">
-      <ColNames>name</ColNames>
-      <ObjectId>16392</ObjectId>
-      <StateNumber>491</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-      <CollationNames>default</CollationNames>
-      <CollationIds>100</CollationIds>
-      <CollationParentNames>pg_catalog</CollationParentNames>
-    </index>
-    <key id="299" parent="261" name="persons_pk">
-      <ObjectId>16391</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>489</StateNumber>
-      <UnderlyingIndexId>16390</UnderlyingIndexId>
-    </key>
-    <key id="300" parent="261" name="persons_pk2">
-      <ObjectId>16393</ObjectId>
-      <StateNumber>489</StateNumber>
-      <UnderlyingIndexId>16392</UnderlyingIndexId>
-    </key>
-    <check id="301" parent="262" name="reservation_status_check">
-      <ColNames>status</ColNames>
-      <ObjectId>16435</ObjectId>
-      <Predicate>(status)::text = ANY ((ARRAY[&apos;PAID&apos;::character varying, &apos;CANCELED&apos;::character varying])::text[])</Predicate>
-      <StateNumber>533</StateNumber>
-    </check>
-    <column id="302" parent="262" name="id">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>533</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="303" parent="262" name="end_date">
-      <DasType>date|0s</DasType>
-      <Position>2</Position>
-      <StateNumber>533</StateNumber>
-      <TypeId>1082</TypeId>
-    </column>
-    <column id="304" parent="262" name="payment_uid">
-      <DasType>uuid|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>533</StateNumber>
-      <TypeId>2950</TypeId>
-    </column>
-    <column id="305" parent="262" name="reservation_uid">
-      <DasType>uuid|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>533</StateNumber>
-      <TypeId>2950</TypeId>
-    </column>
-    <column id="306" parent="262" name="start_date">
-      <DasType>date|0s</DasType>
-      <Position>5</Position>
-      <StateNumber>533</StateNumber>
-      <TypeId>1082</TypeId>
-    </column>
-    <column id="307" parent="262" name="status">
-      <DasType>varchar(20)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-      <StateNumber>533</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="308" parent="262" name="username">
-      <DasType>varchar(80)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>7</Position>
-      <StateNumber>533</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="309" parent="262" name="hotel_id">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>8</Position>
-      <StateNumber>533</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <foreign-key id="310" parent="262" name="fkbl85s9hir9bsv8yuxdp80ptge">
-      <ColNames>hotel_id</ColNames>
-      <ObjectId>16446</ObjectId>
-      <StateNumber>540</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16424</RefTableId>
-    </foreign-key>
-    <index id="311" parent="262" name="reservation_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16436</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>533</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="312" parent="262" name="uk_1rfwxjywla36su2boav816tsa">
-      <ColNames>reservation_uid</ColNames>
-      <ObjectId>16440</ObjectId>
-      <StateNumber>537</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="313" parent="262" name="reservation_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16437</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>533</StateNumber>
-      <UnderlyingIndexId>16436</UnderlyingIndexId>
-    </key>
-    <key id="314" parent="262" name="uk_1rfwxjywla36su2boav816tsa">
-      <ObjectId>16441</ObjectId>
-      <StateNumber>537</StateNumber>
-      <UnderlyingIndexId>16440</UnderlyingIndexId>
->>>>>>> origin/dev
     </key>
   </database-model>
 </dataSource>
