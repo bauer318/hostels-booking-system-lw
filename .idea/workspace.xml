@@ -4,16 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="Loyalty service turned off for first step done">
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/HttpMethodType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/LoyaltyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/RequestProcessConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/RequestProcessProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/RequestProcessor.java" afterDir="false" />
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="core done">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_23__4_44_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_23__4_44_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/LoyaltyServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/LoyaltyServiceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/PaymentServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/PaymentServiceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/ReservationServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/ReservationServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/HttpMethodType.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/HttpMethodType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/RequestProcessConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/RequestProcessConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/RequestProcessProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/RequestProcessProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/RequestProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/service/RequestProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/src/main/java/ru/bmstu/kibamba/reservation/service/ReservationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +29,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -32,11 +36,14 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="second-lw" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -102,7 +109,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayApplication">
+  <component name="RunManager" selected="Spring Boot.ReservationApplication">
     <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ru.bmstu.kibamba.gateway.GatewayApplication" />
@@ -162,8 +169,6 @@
       <list>
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -182,10 +187,10 @@
       <workItem from="1697561667769" duration="329000" />
       <workItem from="1697961842189" duration="29007000" />
       <workItem from="1698084859593" duration="17309000" />
-      <workItem from="1700523511019" duration="3612000" />
-      <workItem from="1700609208354" duration="5593000" />
-      <workItem from="1701759221950" duration="10195000" />
-      <workItem from="1702292602541" duration="23615000" />
+      <workItem from="1698132669152" duration="19640000" />
+      <workItem from="1699361240329" duration="297000" />
+      <workItem from="1699433538178" duration="110000" />
+      <workItem from="1700643067663" duration="4700000" />
     </task>
     <task id="LOCAL-00001" summary="added reservation and hotel entities">
       <option name="closed" value="true" />
@@ -219,39 +224,7 @@
       <option name="project" value="LOCAL" />
       <updated>1698018021773</updated>
     </task>
-    <task id="LOCAL-00005" summary="added ReservationFullResponse">
-      <option name="closed" value="true" />
-      <created>1700008204966</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1700008204966</updated>
-    </task>
-    <task id="LOCAL-00006" summary="separated gateway controllers">
-      <option name="closed" value="true" />
-      <created>1700670873567</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1700670873567</updated>
-    </task>
-    <task id="LOCAL-00007" summary="added task scheduler">
-      <option name="closed" value="true" />
-      <created>1701769762064</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1701769762064</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Loyalty service turned off for first step done">
-      <option name="closed" value="true" />
-      <created>1702361227363</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1702361227363</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,10 +258,6 @@
     <MESSAGE value="added payment entity" />
     <MESSAGE value="added payment loyalty entity" />
     <MESSAGE value="core done" />
-    <MESSAGE value="added ReservationFullResponse" />
-    <MESSAGE value="separated gateway controllers" />
-    <MESSAGE value="added task scheduler" />
-    <MESSAGE value="Loyalty service turned off for first step done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Loyalty service turned off for first step done" />
+    <option name="LAST_COMMIT_MESSAGE" value="core done" />
   </component>
 </project>

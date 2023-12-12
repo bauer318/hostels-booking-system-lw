@@ -33,7 +33,7 @@ public class PaymentServiceController {
     private final FTCircuitBreaker paymentServiceCB;
     private Queue<FTDelayedCommand> delayedCommands;
     private final TaskScheduler scheduler;
-    private final RequestProcessProducer requestProcessProducer;
+    //private final RequestProcessProducer requestProcessProducer;
 
     private int count = 0;
 
@@ -62,9 +62,9 @@ public class PaymentServiceController {
         this.scheduler = scheduler;
         this.paymentServiceCB = new FTCircuitBreaker();
         this.delayedCommands = new ArrayDeque<>();
-        BlockingQueue<RequestProcessor<?, ?>> requestBlockingQueue = new LinkedBlockingQueue<>(10);
+        /*BlockingQueue<RequestProcessor<?, ?>> requestBlockingQueue = new LinkedBlockingQueue<>(10);
         requestProcessProducer = new RequestProcessProducer(requestBlockingQueue);
-        new Thread(new RequestProcessConsumer(requestBlockingQueue, TIME_OUT)).start();
+        new Thread(new RequestProcessConsumer(requestBlockingQueue, TIME_OUT)).start();*/
     }
 
     @GetMapping("/manage/health")
@@ -91,13 +91,6 @@ public class PaymentServiceController {
         try {
             return restTemplate.exchange(uri, HttpMethod.PUT, entity, PaymentResponse.class, paymentUid).getBody();
         } catch (Exception e) {
-
-            requestProcessProducer.addRequest(new RequestProcessor<>(uri,
-                    paymentUid,
-                    entity,
-                    new PaymentResponse(),
-                    HttpMethodType.PUT, restTemplate));
-
             throw new ServiceUnavailableException("Payment service unavailable");
         }
 

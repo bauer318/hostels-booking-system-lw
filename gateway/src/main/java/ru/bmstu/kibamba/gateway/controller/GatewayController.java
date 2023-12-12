@@ -27,13 +27,13 @@ public class GatewayController {
     @GetMapping(value = "/me", produces = "application/json")
     public ResponseEntity<?> getMe(@RequestHeader("X-User-Name") String xUserName) {
         UserInfoResponse userInfo = new UserInfoResponse();
-        try{
+        try {
             userInfo.setReservations(new ArrayList<>());
             HttpHeaders headers = gatewayService.createHeader(xUserName);
             HttpEntity<HttpHeaders> request = new HttpEntity<>(headers);
             String baseUrl = "http://localhost:8080/api/v1";
             ReservationShortResponse[] reservationShortResponses = restTemplate.exchange(
-                    baseUrl +"/reservations",HttpMethod.GET,request,ReservationShortResponse[].class
+                    baseUrl + "/reservations", HttpMethod.GET, request, ReservationShortResponse[].class
             ).getBody();
             assert reservationShortResponses != null;
             userInfo.getReservations().addAll(List.of(reservationShortResponses));
@@ -47,10 +47,10 @@ public class GatewayController {
                     .status(loyalty.getStatus())
                     .build());
             return ResponseEntity.ok(userInfo);
-        }catch (Exception e){
+        } catch (Exception e) {
             UserInfoFallBackResponse help = new UserInfoFallBackResponse();
             help.setReservations(new ArrayList<>());
-            String[] a =new String[]{};
+            String[] a = new String[]{};
             help.setLoyalty(a);
             return ResponseEntity.ok(help);
         }

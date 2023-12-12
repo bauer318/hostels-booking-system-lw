@@ -44,9 +44,14 @@ public class ReservationController {
         reservationService.deleteReservation(reservationUid);
     }
 
+    @PutMapping(value = "/{reservationUid}", produces = "application/json")
+    public ReservationResponse update(@PathVariable("reservationUid") UUID reservationUid) {
+        return reservationService.updateReservation(reservationUid);
+    }
+
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/manage/health")
-    public String checkServiceAvailability(){
+    public String checkServiceAvailability() {
         return "Reservation service is available";
     }
 }

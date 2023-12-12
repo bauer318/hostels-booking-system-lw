@@ -58,23 +58,42 @@ public class LoyaltyServiceController {
     }
 
     @PutMapping(consumes = "application/json", produces = "application/json")
-    public LoyaltyInfoResponse updateLoyalty(@RequestHeader("X-User-Name") String xUserName, @RequestBody LoyaltyPut loyaltyPut) {
+    public LoyaltyInfoResponse updateLoyalty(@RequestHeader("X-User-Name") String xUserName) {
         HttpHeaders headers = gatewayService.createHeader(xUserName);
-        HttpEntity<LoyaltyPut> entity = new HttpEntity<>(loyaltyPut, headers);
+        HttpEntity<HttpHeaders> loyaltyEntity = new HttpEntity<>(headers);
         try {
+            LoyaltyInfoResponse loyaltyResponse = restTemplate.exchange(loyaltyBaseUrl,
+                    HttpMethod.GET,
+                    loyaltyEntity,
+                    LoyaltyInfoResponse.class
+            ).getBody();
+            assert loyaltyResponse != null;
+            LoyaltyPut loyaltyPut = LoyaltyPut.builder()
+                    .reservationCount(loyaltyResponse.getReservationCount() - 1)
+                    .status(loyaltyResponse.getStatus())
+                    .build();
+            HttpEntity<LoyaltyPut> entity = new HttpEntity<>(loyaltyPut, headers);
             return restTemplate.exchange(loyaltyBaseUrl, HttpMethod.PUT, entity, LoyaltyInfoResponse.class).getBody();
         } catch (Exception e) {
             requestProcessProducer.addRequest(
                     new RequestProcessor<>(
                             loyaltyBaseUrl,
-                            entity,
+                            loyaltyEntity,
                             new LoyaltyInfoResponse(),
-                            HttpMethodType.PUT,
-                            restTemplate
+                            HttpMethodType.UPDATE,
+                            restTemplate,
+                            xUserName
                     )
             );
-            throw new ServiceUnavailableException("Loyalty Service unavailable");
         }
+        return null;
+    }
 
+    @PutMapping(value = "/up", consumes = "application/json", produces = "application/json")
+    public LoyaltyInfoResponse incrementLoyalty(@RequestHeader("X-User-Name") String xUserName,
+                                                @RequestBody LoyaltyPut loyaltyPut) {
+        HttpHeaders headers = gatewayService.createHeader(xUserName);
+        HttpEntity<LoyaltyPut> entity = new HttpEntity<>(loyaltyPut, headers);
+        return restTemplate.exchange(loyaltyBaseUrl, HttpMethod.PUT, entity, LoyaltyInfoResponse.class).getBody();
     }
 }

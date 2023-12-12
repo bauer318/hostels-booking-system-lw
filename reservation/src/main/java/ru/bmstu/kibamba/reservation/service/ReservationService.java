@@ -16,4 +16,6 @@ public interface ReservationService {
     ReservationResponse createReservation(String username, ReservationRequest reservationRequest);
 
     void deleteReservation(UUID reservationUid);
+
+    ReservationResponse updateReservation(UUID reservationUid);
 }

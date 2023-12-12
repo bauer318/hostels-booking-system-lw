@@ -5,6 +5,7 @@
       <option name="customHeaders">
         <set>
           <option value="X-User-Name" />
+          <option value="reservationUid" />
         </set>
       </option>
     </inspection_tool>

@@ -84,4 +84,13 @@ public class ReservationServiceImpl implements ReservationService {
         );
         reservationRepository.delete(reservation);
     }
+
+    @Override
+    public ReservationResponse updateReservation(UUID reservationUid) {
+        Reservation reservation = reservationRepository.findByReservationUid(reservationUid).orElseThrow(
+                () -> new EntityNotFoundException("Not found reservation by uid " + reservationUid)
+        );
+        reservation.setStatus("CANCELED");
+        return buildReservationResponse(reservationRepository.save(reservation));
+    }
 }

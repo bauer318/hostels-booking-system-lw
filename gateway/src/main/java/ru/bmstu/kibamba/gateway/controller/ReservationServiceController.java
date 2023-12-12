@@ -149,6 +149,7 @@ public class ReservationServiceController {
         PaymentResponse payment = restTemplate.getForObject(paymentBaseUrl.concat("/{paymentUid}"),
                 PaymentResponse.class, reservation.getPaymentUid());
 
+
         Hotel hotel = reservation.getHotel();
         String fullAddress = hotel.getCountry() + ", " + hotel.getCity() + ", " + hotel.getAddress();
 
@@ -196,29 +197,15 @@ public class ReservationServiceController {
 
         restTemplate.exchange(paymentBaseUrl.concat("/{paymentUid}"), HttpMethod.PUT, paymentRequest, PaymentResponse.class, paymentUid);
 
+        restTemplate.exchange("http://localhost:8070/api/v1/reservations/{reservationUid}",HttpMethod.PUT,paymentRequest, ReservationResponse.class, reservationUid);
+
         HttpEntity<HttpHeaders> loyaltyEntity = new HttpEntity<>(headers);
 
-        LoyaltyInfoResponse loyaltyResponse = null;
-        try {
-            loyaltyResponse = restTemplate.exchange(loyaltyBaseUrl,
-                    HttpMethod.GET, loyaltyEntity, LoyaltyInfoResponse.class).getBody();
-            assert loyaltyResponse != null;
-            LoyaltyPut loyaltyPut = LoyaltyPut.builder()
-                    .reservationCount(loyaltyResponse.getReservationCount() - 1)
-                    .status(loyaltyResponse.getStatus())
-                    .build();
-            var loyaltyRequest = new HttpEntity<>(loyaltyPut, headers);
-            restTemplate.exchange(loyaltyBaseUrl, HttpMethod.PUT, loyaltyRequest, LoyaltyInfoResponse.class);
-        } catch (Exception e) {
-            loyaltyService.retryProcessRequest(
-                    restTemplate,
-                    loyaltyBaseUrl,
-                    loyaltyEntity,
-                    xUserName
-            );
+        LoyaltyInfoResponse responseLoyalty = restTemplate.exchange(loyaltyBaseUrl, HttpMethod.PUT, loyaltyEntity, LoyaltyInfoResponse.class).getBody();
+        if (responseLoyalty != null) {
+            String uriToDelete = "http://localhost:8070/api/v1/reservations/{reservationUid}";
+            restTemplate.delete(uriToDelete, reservationUid);
         }
-        String uriToDelete = "http://localhost:8070/api/v1/reservations/{reservationUid}";
-        restTemplate.delete(uriToDelete, reservationUid);
 
     }
 
@@ -258,7 +245,7 @@ public class ReservationServiceController {
                 .build();
 
         HttpEntity<LoyaltyPut> entityLoyaltyPut = new HttpEntity<>(loyaltyPut, headers);
-        restTemplate.exchange(loyaltyBaseUrl, HttpMethod.PUT, entityLoyaltyPut, LoyaltyInfoResponse.class);
+        restTemplate.exchange(loyaltyBaseUrl.concat("/up"), HttpMethod.PUT, entityLoyaltyPut, LoyaltyInfoResponse.class);
 
         assert paymentResponse != null;
         ReservationRequestFull reservationRequestFull = buildReservationRequestFull(reservationRequest, paymentResponse, hotel);

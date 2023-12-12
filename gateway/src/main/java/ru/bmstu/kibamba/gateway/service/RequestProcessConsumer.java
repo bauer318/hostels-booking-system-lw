@@ -18,7 +18,9 @@ public class RequestProcessConsumer implements Runnable {
     public void run() {
         log.info("Run process request");
         try {
+            log.info("starts waiting");
             Thread.sleep(this.timeOut);
+            log.info("stop waiting");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -28,11 +30,15 @@ public class RequestProcessConsumer implements Runnable {
 
     private void consumeRequest() {
         try {
+            log.info("take request");
             RequestProcessor<?, ?> request = requests.take();
             try {
+                log.info("running request");
                 request.run();
             } catch (Exception e) {
                 requests.put(request);
+                log.info("service still unavailable , so re-put request");
+                run();
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
