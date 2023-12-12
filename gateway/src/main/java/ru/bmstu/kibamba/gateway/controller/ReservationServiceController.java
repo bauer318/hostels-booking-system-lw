@@ -8,6 +8,7 @@ import ru.bmstu.kibamba.gateway.exception.ServiceUnavailableException;
 import ru.bmstu.kibamba.gateway.model.Hotel;
 import ru.bmstu.kibamba.gateway.payload.*;
 import ru.bmstu.kibamba.gateway.service.GatewayService;
+import ru.bmstu.kibamba.gateway.service.LoyaltyService;
 
 import java.time.Period;
 import java.util.ArrayList;
@@ -25,13 +26,16 @@ public class ReservationServiceController {
 
     private final String loyaltyBaseUrl = "http://localhost:8080/api/v1/loyalty";
     private int count = 0;
+    private final LoyaltyService loyaltyService;
 
 
     @Autowired
     public ReservationServiceController(RestTemplate restTemplate,
-                                        GatewayService gatewayService) {
+                                        GatewayService gatewayService,
+                                        LoyaltyService loyaltyService) {
         this.restTemplate = restTemplate;
         this.gatewayService = gatewayService;
+        this.loyaltyService = loyaltyService;
     }
 
     private String buildFullAddress(Hotel hotel) {
@@ -79,6 +83,18 @@ public class ReservationServiceController {
                 .hotel(hotel)
                 .build();
 
+    }
+
+    private LoyaltyInfoResponse getLoyaltyResponse(HttpEntity<HttpHeaders> loyaltyEntity) {
+        LoyaltyInfoResponse loyaltyResponse = null;
+        try {
+            loyaltyResponse = restTemplate.exchange(loyaltyBaseUrl,
+                    HttpMethod.GET, loyaltyEntity, LoyaltyInfoResponse.class).getBody();
+        } catch (Exception e) {
+            throw new ServiceUnavailableException("Loyalty Service unavailable");
+        }
+
+        return loyaltyResponse;
     }
 
     @GetMapping("/manage/health")
@@ -182,17 +198,25 @@ public class ReservationServiceController {
 
         HttpEntity<HttpHeaders> loyaltyEntity = new HttpEntity<>(headers);
 
-        LoyaltyInfoResponse loyaltyResponse = restTemplate.exchange(loyaltyBaseUrl,
-                HttpMethod.GET, loyaltyEntity, LoyaltyInfoResponse.class).getBody();
-        assert loyaltyResponse != null;
-        LoyaltyPut loyaltyPut = LoyaltyPut.builder()
-                .reservationCount(loyaltyResponse.getReservationCount() - 1)
-                .status(loyaltyResponse.getStatus())
-                .build();
-        var loyaltyRequest = new HttpEntity<>(loyaltyPut, headers);
-
-        restTemplate.exchange(loyaltyBaseUrl, HttpMethod.PUT, loyaltyRequest, LoyaltyInfoResponse.class);
-
+        LoyaltyInfoResponse loyaltyResponse = null;
+        try {
+            loyaltyResponse = restTemplate.exchange(loyaltyBaseUrl,
+                    HttpMethod.GET, loyaltyEntity, LoyaltyInfoResponse.class).getBody();
+            assert loyaltyResponse != null;
+            LoyaltyPut loyaltyPut = LoyaltyPut.builder()
+                    .reservationCount(loyaltyResponse.getReservationCount() - 1)
+                    .status(loyaltyResponse.getStatus())
+                    .build();
+            var loyaltyRequest = new HttpEntity<>(loyaltyPut, headers);
+            restTemplate.exchange(loyaltyBaseUrl, HttpMethod.PUT, loyaltyRequest, LoyaltyInfoResponse.class);
+        } catch (Exception e) {
+            loyaltyService.retryProcessRequest(
+                    restTemplate,
+                    loyaltyBaseUrl,
+                    loyaltyEntity,
+                    xUserName
+            );
+        }
         String uriToDelete = "http://localhost:8070/api/v1/reservations/{reservationUid}";
         restTemplate.delete(uriToDelete, reservationUid);
 
@@ -218,14 +242,8 @@ public class ReservationServiceController {
         HttpHeaders headers = gatewayService.createHeader(username);
 
         HttpEntity<HttpHeaders> loyaltyEntity = new HttpEntity<>(headers);
-        LoyaltyInfoResponse loyaltyResponse = null;
-        try{
-            restTemplate.exchange(loyaltyBaseUrl,
-                    HttpMethod.GET, loyaltyEntity, LoyaltyInfoResponse.class).getBody();
-        }catch (Exception e){
-            throw new ServiceUnavailableException("Loyalty Service unavailable");
-        }
-        assert false;
+        LoyaltyInfoResponse loyaltyResponse = getLoyaltyResponse(loyaltyEntity);
+        assert loyaltyResponse != null;
         Integer constWithDiscount = costWithoutDiscount - (costWithoutDiscount * loyaltyResponse.getDiscount() / 100);
 
         PaymentRequest paymentRequest = gatewayService.createPayment(constWithDiscount);

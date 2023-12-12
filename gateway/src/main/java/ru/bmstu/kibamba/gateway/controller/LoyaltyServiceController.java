@@ -8,7 +8,10 @@ import org.springframework.web.client.RestTemplate;
 import ru.bmstu.kibamba.gateway.exception.ServiceUnavailableException;
 import ru.bmstu.kibamba.gateway.payload.LoyaltyInfoResponse;
 import ru.bmstu.kibamba.gateway.payload.LoyaltyPut;
-import ru.bmstu.kibamba.gateway.service.GatewayService;
+import ru.bmstu.kibamba.gateway.service.*;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 @RestController
 @RequestMapping("/api/v1/loyalty")
@@ -19,10 +22,16 @@ public class LoyaltyServiceController {
 
     private final String loyaltyBaseUrl = "http://localhost:8050/api/v1/loyalty";
 
+    private final RequestProcessProducer requestProcessProducer;
+
     @Autowired
     public LoyaltyServiceController(RestTemplate restTemplate, GatewayService gatewayService) {
         this.restTemplate = restTemplate;
         this.gatewayService = gatewayService;
+        BlockingQueue<RequestProcessor<?, ?>> requestBlockingQueue = new LinkedBlockingQueue<>(10);
+        requestProcessProducer = new RequestProcessProducer(requestBlockingQueue);
+        long TIME_OUT = 10 * 1000L;
+        new Thread(new RequestProcessConsumer(requestBlockingQueue, TIME_OUT)).start();
     }
 
     @GetMapping("/manage/health")
@@ -50,11 +59,20 @@ public class LoyaltyServiceController {
 
     @PutMapping(consumes = "application/json", produces = "application/json")
     public LoyaltyInfoResponse updateLoyalty(@RequestHeader("X-User-Name") String xUserName, @RequestBody LoyaltyPut loyaltyPut) {
+        HttpHeaders headers = gatewayService.createHeader(xUserName);
+        HttpEntity<LoyaltyPut> entity = new HttpEntity<>(loyaltyPut, headers);
         try {
-            HttpHeaders headers = gatewayService.createHeader(xUserName);
-            HttpEntity<LoyaltyPut> entity = new HttpEntity<>(loyaltyPut, headers);
             return restTemplate.exchange(loyaltyBaseUrl, HttpMethod.PUT, entity, LoyaltyInfoResponse.class).getBody();
         } catch (Exception e) {
+            requestProcessProducer.addRequest(
+                    new RequestProcessor<>(
+                            loyaltyBaseUrl,
+                            entity,
+                            new LoyaltyInfoResponse(),
+                            HttpMethodType.PUT,
+                            restTemplate
+                    )
+            );
             throw new ServiceUnavailableException("Loyalty Service unavailable");
         }
 

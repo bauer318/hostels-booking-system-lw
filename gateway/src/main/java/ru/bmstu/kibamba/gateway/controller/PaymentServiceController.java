@@ -15,9 +15,11 @@ import ru.bmstu.kibamba.gateway.faulttolerance.FTDelayedCommand;
 import ru.bmstu.kibamba.gateway.payload.PaymentPut;
 import ru.bmstu.kibamba.gateway.payload.PaymentRequest;
 import ru.bmstu.kibamba.gateway.payload.PaymentResponse;
-import ru.bmstu.kibamba.gateway.service.GatewayService;
+import ru.bmstu.kibamba.gateway.service.*;
 
 import java.util.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 @RestController
 @RequestMapping("/api/v1/payments")
@@ -31,6 +33,8 @@ public class PaymentServiceController {
     private final FTCircuitBreaker paymentServiceCB;
     private Queue<FTDelayedCommand> delayedCommands;
     private final TaskScheduler scheduler;
+    private final RequestProcessProducer requestProcessProducer;
+
     private int count = 0;
 
     private final Runnable healthCheck = new Runnable() {
@@ -58,6 +62,19 @@ public class PaymentServiceController {
         this.scheduler = scheduler;
         this.paymentServiceCB = new FTCircuitBreaker();
         this.delayedCommands = new ArrayDeque<>();
+        BlockingQueue<RequestProcessor<?, ?>> requestBlockingQueue = new LinkedBlockingQueue<>(10);
+        requestProcessProducer = new RequestProcessProducer(requestBlockingQueue);
+        new Thread(new RequestProcessConsumer(requestBlockingQueue, TIME_OUT)).start();
+    }
+
+    @GetMapping("/manage/health")
+    public ResponseEntity<String> manageHealth() {
+        try {
+            String healthUri = baseUrl.concat("/manage/health");
+            return restTemplate.getForEntity(healthUri, String.class);
+        } catch (Exception e) {
+            throw new ServiceUnavailableException("Payment service unavailable");
+        }
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
@@ -71,7 +88,20 @@ public class PaymentServiceController {
         String uri = baseUrl.concat("/{paymentUid}");
         HttpHeaders headers = gatewayService.createHeader();
         HttpEntity<PaymentPut> entity = new HttpEntity<>(paymentPut, headers);
-        return restTemplate.exchange(uri, HttpMethod.PUT, entity, PaymentResponse.class, paymentUid).getBody();
+        try {
+            return restTemplate.exchange(uri, HttpMethod.PUT, entity, PaymentResponse.class, paymentUid).getBody();
+        } catch (Exception e) {
+
+            requestProcessProducer.addRequest(new RequestProcessor<>(uri,
+                    paymentUid,
+                    entity,
+                    new PaymentResponse(),
+                    HttpMethodType.PUT, restTemplate));
+
+            throw new ServiceUnavailableException("Payment service unavailable");
+        }
+
+
     }
 
     @GetMapping(value = "/{paymentUid}")
