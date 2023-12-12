@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import ru.bmstu.kibamba.gateway.exception.ServiceUnavailableException;
 import ru.bmstu.kibamba.gateway.model.Hotel;
 import ru.bmstu.kibamba.gateway.payload.*;
 import ru.bmstu.kibamba.gateway.service.GatewayService;
@@ -78,6 +79,16 @@ public class ReservationServiceController {
                 .hotel(hotel)
                 .build();
 
+    }
+
+    @GetMapping("/manage/health")
+    public ResponseEntity<String> manageHealth() {
+        try {
+            String healthUri = reservationServiceBaseUrl.concat("/manage/health");
+            return restTemplate.getForEntity(healthUri, String.class);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Reservation service unavailable");
+        }
     }
 
     @GetMapping(value = "/reservations", produces = "application/json")
@@ -207,10 +218,14 @@ public class ReservationServiceController {
         HttpHeaders headers = gatewayService.createHeader(username);
 
         HttpEntity<HttpHeaders> loyaltyEntity = new HttpEntity<>(headers);
-
-        LoyaltyInfoResponse loyaltyResponse = restTemplate.exchange(loyaltyBaseUrl,
-                HttpMethod.GET, loyaltyEntity, LoyaltyInfoResponse.class).getBody();
-        assert loyaltyResponse != null;
+        LoyaltyInfoResponse loyaltyResponse = null;
+        try{
+            restTemplate.exchange(loyaltyBaseUrl,
+                    HttpMethod.GET, loyaltyEntity, LoyaltyInfoResponse.class).getBody();
+        }catch (Exception e){
+            throw new ServiceUnavailableException("Loyalty Service unavailable");
+        }
+        assert false;
         Integer constWithDiscount = costWithoutDiscount - (costWithoutDiscount * loyaltyResponse.getDiscount() / 100);
 
         PaymentRequest paymentRequest = gatewayService.createPayment(constWithDiscount);

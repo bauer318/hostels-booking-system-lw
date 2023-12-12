@@ -1,12 +1,12 @@
 package ru.bmstu.kibamba.gateway.payload;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 public class ExceptionResponse {
     private String message;
     private int statusCode;

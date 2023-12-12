@@ -24,27 +24,27 @@ import java.util.*;
 @Slf4j
 public class PaymentServiceController {
     private static int maxCount = 2;
+    private final long TIME_OUT = 10 * 1000L;
     private final RestTemplate restTemplate;
     private final GatewayService gatewayService;
     private final String baseUrl = "http://localhost:8060/api/v1/payments";
-
     private final FTCircuitBreaker paymentServiceCB;
-
     private Queue<FTDelayedCommand> delayedCommands;
     private final TaskScheduler scheduler;
     private int count = 0;
+
     private final Runnable healthCheck = new Runnable() {
         @Override
         public void run() {
-            log.info("trying to re run ");
+            log.info("try to check payment service availability ");
             try {
                 log.info("manage availability");
                 String healthUri = baseUrl.concat("/manage/health");
                 restTemplate.getForEntity(healthUri, String.class);
 
             } catch (Exception e) {
-                log.info("service not available");
-                scheduler.schedule(this, new Date(System.currentTimeMillis() + 1L).toInstant());
+                log.info("payment service is not available");
+                scheduler.schedule(this, new Date(System.currentTimeMillis() + TIME_OUT).toInstant());
                 count = 0;
             }
         }
@@ -78,13 +78,13 @@ public class PaymentServiceController {
     public PaymentResponse getPayment(@PathVariable("paymentUid") UUID paymentUid) {
         try {
             if (count >= maxCount) {
-                scheduler.schedule(healthCheck, new Date(System.currentTimeMillis() + 1L).toInstant());
+                scheduler.schedule(healthCheck, new Date(System.currentTimeMillis() + TIME_OUT).toInstant());
                 return fallbackTest();
             } else {
                 String uri = baseUrl.concat("/{paymentUid}");
                 return restTemplate.getForObject(uri, PaymentResponse.class, paymentUid);
             }
-        }catch (Exception exception){
+        } catch (Exception exception) {
             count++;
             return null;
         }

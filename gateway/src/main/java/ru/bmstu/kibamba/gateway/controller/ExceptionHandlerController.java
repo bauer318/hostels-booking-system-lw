@@ -10,13 +10,9 @@ import ru.bmstu.kibamba.gateway.payload.ExceptionResponse;
 @RestControllerAdvice
 public class ExceptionHandlerController {
 
-    @ExceptionHandler(ServiceUnavailableException.class)
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
+    @ExceptionHandler(ServiceUnavailableException.class)
     public ExceptionResponse handleServiceUnavailableException(ServiceUnavailableException exception){
-        return ExceptionResponse
-                .builder()
-                .message(exception.getMessage())
-                .statusCode(HttpStatus.SERVICE_UNAVAILABLE.value())
-                .build();
+        return new ExceptionResponse(exception.getMessage(), HttpStatus.SERVICE_UNAVAILABLE.value());
     }
 }

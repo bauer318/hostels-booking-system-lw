@@ -4,21 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="separated gateway controllers">
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/ExceptionHandlerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/exception/ServiceUnavailableException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/faulttolerance/FTCircuitBreaker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/faulttolerance/FTCircuitBreakerState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/faulttolerance/FTCommandState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/faulttolerance/FTDelayedCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ExceptionResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/53a6004a-ce20-4913-94c0-d9883d4f10af.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/53a6004a-ce20-4913-94c0-d9883d4f10af.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_23,_2_17_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_23__2_17_AM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added task scheduler">
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/UserInfoFallBackResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/postman/collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/postman/collection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/ExceptionHandlerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/ExceptionHandlerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/GatewayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/LoyaltyServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/LoyaltyServiceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/PaymentServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/PaymentServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/ReservationServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/controller/ReservationServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/exception/ServiceUnavailableException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/exception/ServiceUnavailableException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ExceptionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/ExceptionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/LoyaltyShortResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/ru/bmstu/kibamba/gateway/payload/LoyaltyShortResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +186,8 @@
       <workItem from="1698084859593" duration="17309000" />
       <workItem from="1700523511019" duration="3612000" />
       <workItem from="1700609208354" duration="5593000" />
-      <workItem from="1701759221950" duration="9073000" />
+      <workItem from="1701759221950" duration="10195000" />
+      <workItem from="1702292602541" duration="13112000" />
     </task>
     <task id="LOCAL-00001" summary="added reservation and hotel entities">
       <option name="closed" value="true" />
@@ -239,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700670873567</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added task scheduler">
+      <option name="closed" value="true" />
+      <created>1701769762064</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701769762064</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +281,7 @@
     <MESSAGE value="core done" />
     <MESSAGE value="added ReservationFullResponse" />
     <MESSAGE value="separated gateway controllers" />
-    <option name="LAST_COMMIT_MESSAGE" value="separated gateway controllers" />
+    <MESSAGE value="added task scheduler" />
+    <option name="LAST_COMMIT_MESSAGE" value="added task scheduler" />
   </component>
 </project>
