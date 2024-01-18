@@ -1,0 +1,9 @@
+version: "3"
+services:
+  gateway-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gateway-container
+    ports:
+      - "8080:8080"

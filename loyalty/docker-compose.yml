@@ -1,0 +1,41 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:13-alpine
+    container_name: hostel-booking-loyalty-db
+    environment:
+      POSTGRES_USER: ${LOYALTY_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${LOYALTY_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${LOYALTY_POSTGRES_DB}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./postgres/:/docker-entrypoint-initdb.d/
+    ports:
+      - "5432:5432"
+    networks:
+      - hostel-booking-loyalty-network
+
+  loyalty-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: loyalty-container
+    depends_on:
+      - postgres
+    ports:
+      - "8050:8050"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${LOYALTY_POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${LOYALTY_POSTGRES_USER}
+      SPRING_DATASOURE_PASSWORD: ${LOYALTY_POSTGRES_PASSWORD}
+    networks:
+      - hostel-booking-loyalty-network
+
+
+
+volumes:
+  db-data:
+
+networks:
+  hostel-booking-loyalty-network:
+    driver: bridge

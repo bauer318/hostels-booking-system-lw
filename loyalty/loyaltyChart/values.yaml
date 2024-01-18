@@ -1,0 +1,20 @@
+replicaCount: 1
+
+postgres:
+  databaseName: loyalty_db
+
+springApp:
+  image:
+    repository: bauer318/loyalty-service
+    pullPolicy: IfNotPresent
+    tag: latest
+
+postgresVolume:
+  persistentVolumeClaim:
+    storageSize: 100Mi
+
+  persistentVolume:
+    storageSize: 100Mi
+    pathOnHost: /var/lib/postgresql/data
+
+  mountPath: /var/lib/postgresql/data

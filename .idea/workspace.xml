@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="second lw done">
-      <change afterPath="$PROJECT_DIR$/gateway/Dockerfile" afterDir="false" />
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added dockerfiles for all services">
+      <change afterPath="$PROJECT_DIR$/gateway/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loyalty/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +36,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="KubernetesApiProvider">{
-  &quot;contexts&quot;: [
-    {
-      &quot;name&quot;: &quot;minikube&quot;,
-      &quot;originalNamespace&quot;: &quot;default&quot;
-    }
-  ],
   &quot;isMigrated&quot;: true
 }</component>
   <component name="KubernetesSettings">
@@ -71,7 +69,7 @@
     &quot;git-widget-placeholder&quot;: &quot;fouth-lw-k8s&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/distributed-system-hostels-booking-system/loyalty/src/main/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/distributed-system-hostels-booking-system/loyalty&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -93,6 +91,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\loyalty" />
       <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\loyalty\src\main\resources" />
       <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\payment\src\main\resources" />
       <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\loyalty\src\main\java\ru\bmstu\kibamba\loyalty" />
@@ -205,7 +204,13 @@
       <workItem from="1698084859593" duration="17309000" />
       <workItem from="1700523511019" duration="3996000" />
       <workItem from="1702969125658" duration="10230000" />
-      <workItem from="1703010200219" duration="1109000" />
+      <workItem from="1703010200219" duration="8422000" />
+      <workItem from="1703581021319" duration="723000" />
+      <workItem from="1703594111757" duration="3425000" />
+      <workItem from="1705517040322" duration="749000" />
+      <workItem from="1705532548801" duration="406000" />
+      <workItem from="1705532996434" duration="2710000" />
+      <workItem from="1705535869143" duration="1875000" />
     </task>
     <task id="LOCAL-00001" summary="added reservation and hotel entities">
       <option name="closed" value="true" />
@@ -255,7 +260,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700527506864</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added dockerfiles for all services">
+      <option name="closed" value="true" />
+      <created>1703026814283</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1703026814284</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +304,7 @@
     <MESSAGE value="core done" />
     <MESSAGE value="added ReservationFullResponse" />
     <MESSAGE value="second lw done" />
-    <option name="LAST_COMMIT_MESSAGE" value="second lw done" />
+    <MESSAGE value="added dockerfiles for all services" />
+    <option name="LAST_COMMIT_MESSAGE" value="added dockerfiles for all services" />
   </component>
 </project>
