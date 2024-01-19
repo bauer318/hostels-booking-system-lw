@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="added dockerfiles for all services">
-      <change afterPath="$PROJECT_DIR$/gateway/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/loyalty/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/loyalty/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="deleted old images. dokerized loyalty service with db on same network. Begin kubernetes config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/.helmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/Chart.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/templates/postgres-deployment.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/templates/postgres-pv.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/templates/secrets.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/values.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +211,11 @@
       <workItem from="1705517040322" duration="749000" />
       <workItem from="1705532548801" duration="406000" />
       <workItem from="1705532996434" duration="2710000" />
-      <workItem from="1705535869143" duration="1875000" />
+      <workItem from="1705535869143" duration="4262000" />
+      <workItem from="1705571981647" duration="572000" />
+      <workItem from="1705581576532" duration="272000" />
+      <workItem from="1705581968827" duration="6365000" />
+      <workItem from="1705589646647" duration="553000" />
     </task>
     <task id="LOCAL-00001" summary="added reservation and hotel entities">
       <option name="closed" value="true" />
@@ -268,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703026814284</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="deleted old images. dokerized loyalty service with db on same network. Begin kubernetes config">
+      <option name="closed" value="true" />
+      <created>1705540223844</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1705540223845</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +318,7 @@
     <MESSAGE value="added ReservationFullResponse" />
     <MESSAGE value="second lw done" />
     <MESSAGE value="added dockerfiles for all services" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dockerfiles for all services" />
+    <MESSAGE value="deleted old images. dokerized loyalty service with db on same network. Begin kubernetes config" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleted old images. dokerized loyalty service with db on same network. Begin kubernetes config" />
   </component>
 </project>
