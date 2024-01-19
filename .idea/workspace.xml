@@ -4,15 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="deleted old images. dokerized loyalty service with db on same network. Begin kubernetes config">
+    <list default="true" id="58b8b03b-fd8e-4a06-840f-1681f1cccbbd" name="Changes" comment="let fixed retry request">
+      <change afterPath="$PROJECT_DIR$/k8s/loadbalancer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/postgres-chart/.helmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/postgres-chart/Chart.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/postgres-chart/templates/configmap.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/postgres-chart/templates/deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/postgres-chart/templates/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/postgres-chart/values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/services-chart/.helmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/services-chart/Chart.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/services-chart/charts/service-chart/Chart.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/services-chart/charts/service-chart/templates/deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/services-chart/charts/service-chart/templates/ingress.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/services-chart/charts/service-chart/templates/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/services-chart/charts/service-chart/values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/services-chart/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/53a6004a-ce20-4913-94c0-d9883d4f10af.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9987bcae-8b49-461b-94a4-c1176e9f7479.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9987bcae-8b49-461b-94a4-c1176e9f7479.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loyalty/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/.helmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/Chart.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/templates/postgres-deployment.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/templates/postgres-pv.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/templates/secrets.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loyalty/loyaltyChart/values.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,22 +36,28 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
-        <option value="Dockerfile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="second-lw" />
+        <entry key="$PROJECT_DIR$" value="third-lw-fault-tolerance" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "contexts": [
+    {
+      "name": "minikube",
+      "originalNamespace": "default"
+    }
+  ],
+  "isMigrated": true
+}]]></component>
   <component name="KubernetesSettings">
     <option name="contextName" value="minikube" />
   </component>
@@ -56,60 +75,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fouth-lw-k8s&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/distributed-system-hostels-booking-system/loyalty&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Maven.gateway [clean].executor": "Run",
+    "Maven.loyalty [clean].executor": "Run",
+    "Maven.payment [clean].executor": "Run",
+    "Maven.reservation [clean].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "fouth-lw-k8s",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/distributed-system-hostels-booking-system/loyalty/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\loyalty" />
       <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\loyalty\src\main\resources" />
       <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\payment\src\main\resources" />
       <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\loyalty\src\main\java\ru\bmstu\kibamba\loyalty" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\gateway" />
+      <recent name="$PROJECT_DIR$/k8s/services-chart/charts/service-chart" />
       <recent name="C:\Users\User\IdeaProjects\distributed-system-hostels-booking-system\reservation\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.gateway/Dockerfile">
+  <component name="RunManager" selected="Spring Boot.GatewayApplication">
     <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ru.bmstu.kibamba.gateway.GatewayApplication" />
@@ -144,12 +170,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -171,22 +191,21 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="gateway/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="buildOnly" value="true" />
-          <option name="sourceFilePath" value="gateway/Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.gateway/Dockerfile" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.postgres: Compose Deployment" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-f644763e9732-a73289cf" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -203,19 +222,14 @@
       <workItem from="1697561667769" duration="329000" />
       <workItem from="1697961842189" duration="29007000" />
       <workItem from="1698084859593" duration="17309000" />
-      <workItem from="1700523511019" duration="3996000" />
-      <workItem from="1702969125658" duration="10230000" />
-      <workItem from="1703010200219" duration="8422000" />
-      <workItem from="1703581021319" duration="723000" />
-      <workItem from="1703594111757" duration="3425000" />
-      <workItem from="1705517040322" duration="749000" />
-      <workItem from="1705532548801" duration="406000" />
-      <workItem from="1705532996434" duration="2710000" />
-      <workItem from="1705535869143" duration="4262000" />
-      <workItem from="1705571981647" duration="572000" />
-      <workItem from="1705581576532" duration="272000" />
-      <workItem from="1705581968827" duration="6365000" />
-      <workItem from="1705589646647" duration="553000" />
+      <workItem from="1700523511019" duration="3612000" />
+      <workItem from="1700609208354" duration="5593000" />
+      <workItem from="1701759221950" duration="10195000" />
+      <workItem from="1702292602541" duration="23615000" />
+      <workItem from="1702748283988" duration="184000" />
+      <workItem from="1702748713965" duration="345000" />
+      <workItem from="1704829860499" duration="332000" />
+      <workItem from="1705635456362" duration="6263000" />
     </task>
     <task id="LOCAL-00001" summary="added reservation and hotel entities">
       <option name="closed" value="true" />
@@ -257,29 +271,29 @@
       <option name="project" value="LOCAL" />
       <updated>1700008204966</updated>
     </task>
-    <task id="LOCAL-00006" summary="second lw done">
+    <task id="LOCAL-00006" summary="separated gateway controllers">
       <option name="closed" value="true" />
-      <created>1700527506864</created>
+      <created>1700670873567</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1700527506864</updated>
+      <updated>1700670873567</updated>
     </task>
-    <task id="LOCAL-00007" summary="added dockerfiles for all services">
+    <task id="LOCAL-00007" summary="added task scheduler">
       <option name="closed" value="true" />
-      <created>1703026814283</created>
+      <created>1701769762064</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1703026814284</updated>
+      <updated>1701769762064</updated>
     </task>
-    <task id="LOCAL-00008" summary="deleted old images. dokerized loyalty service with db on same network. Begin kubernetes config">
+    <task id="LOCAL-00008" summary="Loyalty service turned off for first step done">
       <option name="closed" value="true" />
-      <created>1705540223844</created>
+      <created>1702361227363</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1705540223845</updated>
+      <updated>1702361227363</updated>
     </task>
     <option name="localTasksCounter" value="9" />
     <servers />
@@ -316,9 +330,9 @@
     <MESSAGE value="added payment loyalty entity" />
     <MESSAGE value="core done" />
     <MESSAGE value="added ReservationFullResponse" />
-    <MESSAGE value="second lw done" />
-    <MESSAGE value="added dockerfiles for all services" />
-    <MESSAGE value="deleted old images. dokerized loyalty service with db on same network. Begin kubernetes config" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted old images. dokerized loyalty service with db on same network. Begin kubernetes config" />
+    <MESSAGE value="separated gateway controllers" />
+    <MESSAGE value="added task scheduler" />
+    <MESSAGE value="Loyalty service turned off for first step done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Loyalty service turned off for first step done" />
   </component>
 </project>

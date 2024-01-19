@@ -3,6 +3,7 @@ services:
   postgres:
     image: postgres:13-alpine
     container_name: hostel-booking
+    restart: on-failure
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "postgres"
@@ -12,13 +13,41 @@ services:
       - ./postgres/:/docker-entrypoint-initdb.d/
     ports:
       - "5432:5432"
-    networks:
-      - hostel-booking-network
 
+  gateway:
+    image: bauer318/gateway:latest
+    build: gateway/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - reservation
+      - payment
+      - loyalty
+
+
+  reservation:
+    image: bauer318/reservation:latest
+    build: reservation/
+    ports:
+      - "8070:8070"
+    depends_on:
+      - postgres
+
+  payment:
+    image: bauer318/payment:latest
+    build: reservation/
+    ports:
+      - "8060:8060"
+    depends_on:
+      - postgres
+
+  loyalty:
+    image: bauer318/loyalty:latest
+    build: reservation/
+    ports:
+      - "8050:8050"
+    depends_on:
+      - postgres
 
 volumes:
   db-data:
-
-networks:
-  hostel-booking-network:
-    driver: bridge
